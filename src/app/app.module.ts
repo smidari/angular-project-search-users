@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FavotiteUserComponent } from './favotite-user/favotite-user.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
+import {UsersService} from "./users.service";
 
 @NgModule({
   declarations: [
@@ -23,8 +24,7 @@ import { SearchComponent } from './search/search.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

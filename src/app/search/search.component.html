@@ -1,3 +1,16 @@
 <div class="container">
-  <input placeholder="enter username">
+  <form [formGroup]="searchUserForm">
+    <div>
+      <input type="text" formControlName="userFirstName" />
+    </div>
+  </form>
+  <div>
+    <ul>
+      <li *ngFor="let user of usersFound" >
+        <span>{{ user.first_name }}</span> {{ user.last_name }}
+        <button>add</button>
+        <button>More information</button>
+      </li>
+    </ul>
+  </div>
 </div>
