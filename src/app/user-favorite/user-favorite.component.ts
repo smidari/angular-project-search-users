@@ -3,11 +3,11 @@ import { User } from '../user';
 import { UsersService } from '../users.service';
 
 @Component({
-  selector: 'app-favotite-user',
-  templateUrl: './favotite-user.component.html',
-  styleUrls: ['./favotite-user.component.css'],
+  selector: 'app-user-favorite',
+  templateUrl: './user-favorite.component.html',
+  styleUrls: ['./user-favorite.component.css'],
 })
-export class FavotiteUserComponent implements OnInit {
+export class UserFavoriteComponent implements OnInit {
   favouritesUsers: User[];
   selectedFavouritesUser: User;
   constructor(private userService: UsersService) {}
@@ -22,5 +22,9 @@ export class FavotiteUserComponent implements OnInit {
 
   onSelect(favouritesUser: User): void {
     this.selectedFavouritesUser = favouritesUser;
+  }
+
+  trackById(index, item) {
+    return item.id;
   }
 }

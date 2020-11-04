@@ -12,7 +12,9 @@
 button {
   margin-right: 5px;
 }
-
+ ul{
+   list-style-type: none;
+ }
 .cards {
   width: 250px;
 }

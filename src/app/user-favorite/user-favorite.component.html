@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class="container">
+    <ul class="users">
+      <li
+        *ngFor="let user of favouritesUsers; trackBy: trackById"
+        (click)="onSelect(user)"
+      >
+        <span>{{ user.last_name }}</span> {{ user.first_name }}
+      </li>
+    </ul>
+    <div class="cards">
+      <app-user-detail [user]="selectedFavouritesUser"></app-user-detail>
+    </div>
+  </div>
+</div>

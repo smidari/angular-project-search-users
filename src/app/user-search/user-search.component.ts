@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
@@ -6,11 +6,11 @@ import { combineLatest } from 'rxjs';
 import { User } from '../user';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css'],
+  selector: 'app-user-search',
+  templateUrl: './user-search.component.html',
+  styleUrls: ['./user-search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class UserSearchComponent implements OnInit {
   searchUserForm: FormGroup;
   usersFound: User[];
   selectedUser: User;
@@ -47,5 +47,9 @@ export class SearchComponent implements OnInit {
 
   getUserInformation(user: User) {
     this.selectedUser = user;
+  }
+
+  trackById(index, item) {
+    return item.id;
   }
 }
