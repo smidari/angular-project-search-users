@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../user";
+import { User } from '../user';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-favotite-user',
   templateUrl: './favotite-user.component.html',
-  styleUrls: ['./favotite-user.component.css']
+  styleUrls: ['./favotite-user.component.css'],
 })
 export class FavotiteUserComponent implements OnInit {
-  favouritesUser: User[];
+  favouritesUsers: User[];
   selectedFavouritesUser: User;
-  constructor() { }
+  constructor(private userService: UsersService) {}
 
   ngOnInit(): void {
-    this.getFavouritesUser()
+    this.getFavouritesUser();
   }
 
-  getFavouritesUser(){
-    const data =  localStorage.getItem('favourites');
-    this.favouritesUser =  JSON.parse(<string>data);
+  getFavouritesUser() {
+    this.favouritesUsers = this.userService.getFavouritesUsersFromLocalStorage();
   }
 
   onSelect(favouritesUser: User): void {
     this.selectedFavouritesUser = favouritesUser;
-    console.log('selected')
   }
 }

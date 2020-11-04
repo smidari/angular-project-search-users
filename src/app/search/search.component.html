@@ -1,16 +1,36 @@
-<div class="container">
-  <form [formGroup]="searchUserForm">
-    <div>
-      <input type="text" formControlName="userFirstName" />
+<div class="wrapper">
+  <div class="container">
+    <div class="search">
+      <form [formGroup]="searchUserForm">
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="userFirstName"
+              placeholder="Enter user's first name"
+            />
+          </mat-form-field>
+        </div>
+      </form>
+      <div>
+        <ul>
+          <li *ngFor="let user of usersFound">
+            <span>{{ user.first_name }}</span> {{ user.last_name }}
+            <div class="btn">
+              <button (click)="addToFavourites(user)">add</button>
+              <button (click)="getUserInformation(user)">
+                More information
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-  </form>
-  <div>
-    <ul>
-      <li *ngFor="let user of usersFound" >
-        <span>{{ user.first_name }}</span> {{ user.last_name }}
-        <button>add</button>
-        <button>More information</button>
-      </li>
-    </ul>
+    <div class="cards" *ngIf="selectedUser">
+      <div><img src="{{ selectedUser.avatar }}" alt="avatar" /></div>
+      <div><span>first name: </span>{{ selectedUser.first_name }}</div>
+      <div><span>last name: </span>{{ selectedUser.last_name }}</div>
+      <div><span>email: </span>{{ selectedUser.email }}</div>
+    </div>
   </div>
 </div>

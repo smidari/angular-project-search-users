@@ -21,11 +21,7 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe((users) => (this.users = users.data));
   }
 
-  addUserToFavourites(id: any) {
-    const newFavouritesUser = this.users.find((user) => user.id === id);
-    if (!this.favouritesUser.find((item) => item.id === id)) {
-      this.favouritesUser = [...this.favouritesUser, newFavouritesUser];
-    }
-    localStorage.setItem('favourites', JSON.stringify(this.favouritesUser));
+  addUserToFavourites(user: User) {
+    this.userService.saveFavouritesUsersToLocalStorage(user);
   }
 }

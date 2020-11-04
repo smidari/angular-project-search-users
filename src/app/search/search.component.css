@@ -1,5 +1,18 @@
-.container{
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
   padding-top: 3rem;
-  width: 500px;
-  margin: 0 auto;
+  width: 600px;
+}
+
+button {
+  margin-right: 5px;
+}
+
+.cards {
+  width: 250px;
 }

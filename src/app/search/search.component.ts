@@ -13,8 +13,9 @@ import { User } from '../user';
 export class SearchComponent implements OnInit {
   searchUserForm: FormGroup;
   usersFound: User[];
+  selectedUser: User;
 
-  constructor(private service: UsersService) {}
+  constructor(private userService: UsersService) {}
 
   ngOnInit(): void {
     this.createSearchUserForm();
@@ -29,7 +30,7 @@ export class SearchComponent implements OnInit {
 
   searchUsers() {
     combineLatest([
-      this.service.getUsers(),
+      this.userService.getUsers(),
       this.searchUserForm.get('userFirstName').valueChanges,
     ])
       .pipe(
@@ -40,7 +41,11 @@ export class SearchComponent implements OnInit {
       .subscribe((users) => (this.usersFound = users));
   }
 
-  check(){
-    console.log(this.usersFound)
+  addToFavourites(user: User) {
+    this.userService.saveFavouritesUsersToLocalStorage(user);
+  }
+
+  getUserInformation(user: User) {
+    this.selectedUser = user;
   }
 }
