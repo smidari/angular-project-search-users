@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { UsersService } from '../users.service';
+import { UsersService } from '../../../users.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
-import { User } from '../user';
+import { User } from '../../../user';
 
 @Component({
   selector: 'app-user-search',
