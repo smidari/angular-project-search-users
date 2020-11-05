@@ -14,7 +14,7 @@
       </form>
       <div>
         <ul>
-          <li *ngFor="let user of usersFound; trackBy: trackById">
+          <li *ngFor="let user of searchUsers$ | async; trackBy: trackById">
             <span>{{ user.first_name }}</span> {{ user.last_name }}
             <div class="btn">
               <button (click)="addToFavourites(user)">add</button>

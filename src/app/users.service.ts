@@ -13,18 +13,4 @@ export class UsersService {
     const url = `https://reqres.in/api/users?page=2`;
     return this.http.get<UserApi>(url);
   }
-
-  getFavouritesUsersFromLocalStorage() {
-    return JSON.parse(<string>localStorage.getItem('favourites'));
-  }
-
-  saveFavouritesUsersToLocalStorage(user: User) {
-    let users = this.getFavouritesUsersFromLocalStorage();
-    if (!users) {
-      localStorage.setItem('favourites', JSON.stringify([user]));
-    } else if (users && !users.find((item) => item.id === user.id)) {
-      users = [...users, user];
-      localStorage.setItem('favourites', JSON.stringify(users));
-    }
-  }
 }
