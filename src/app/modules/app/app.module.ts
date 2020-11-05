@@ -11,11 +11,15 @@ import { UserSearchComponent } from './user-search/user-search.component';
 import { MatInputModule } from '@angular/material/input';
 
 import {ShareModule} from "../share/share.module";
+import { SdaComponent } from './sda/sda.component';
+import { SssComponent } from './sss/sss.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserSearchComponent,
+    SdaComponent,
+    SssComponent,
   ],
   imports: [
     BrowserModule,
