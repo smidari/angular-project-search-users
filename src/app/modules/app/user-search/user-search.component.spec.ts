@@ -21,4 +21,21 @@ describe('UserSearchComponent component', () => {
     const comp = fixture.componentInstance;
     expect(comp).toBeDefined();
   });
+
+  it('should set a selected user', () => {
+    const user = {
+      id: 10,
+      first_name: 'Ivan',
+      last_name: 'Ivanov',
+      avatar: 'ivan.jpg',
+      email: 'ivan@gmail.com',
+    };
+    const comp = fixture.componentInstance;
+    comp.getUserInformation(user);
+    expect(comp.selectedUser).toEqual(user);
+  });
+
+  it('should', ()=>{
+
+  })
 });
