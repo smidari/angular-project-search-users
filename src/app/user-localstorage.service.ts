@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import {FAVOURITES} from "./const";
+import { FAVOURITES } from './const';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ export class UserLocalstorageService {
   constructor() {}
 
   getFavouritesUsersFromLocalStorage(): User[] {
-    return JSON.parse(<string>localStorage.getItem('favourites'));
+    return JSON.parse(<string>localStorage.getItem(FAVOURITES));
   }
 
   saveFavouritesUsersToLocalStorage(user: User): void {
