@@ -19,31 +19,29 @@ describe('UsersService', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
-  describe('#getUsers', () => {
-    it('should be list of users', () => {
-      const mockUsers: UserApi = {
-        page: 1,
-        per_page: 34,
-        total: 3,
-        total_pages: 3,
-        data: [
-          {
-            id: 1,
-            last_name: 'asda',
-            avatar: 'asdasdas',
-            first_name: 'asfasf',
-            email: 'afasfsff',
-          },
-        ],
-      };
-      userService.getUsers().subscribe((users) => {
-        expect(users).toEqual(mockUsers);
-      });
-      const req = httpTestingController.expectOne(
-        'https://reqres.in/api/users?page=2'
-      );
-      expect(req.request.method).toBe('GET');
-      req.flush(mockUsers);
+  it('should be list of users', () => {
+    const mockUsers: UserApi = {
+      page: 1,
+      per_page: 34,
+      total: 3,
+      total_pages: 3,
+      data: [
+        {
+          id: 1,
+          last_name: 'Ivanova',
+          avatar: 'dasha.jpg',
+          first_name: 'Dasha',
+          email: 'dasha@gmail.com',
+        },
+      ],
+    };
+    userService.getUsers().subscribe((users) => {
+      expect(users).toEqual(mockUsers);
     });
+    const req = httpTestingController.expectOne(
+      'https://reqres.in/api/users?page=2'
+    );
+    expect(req.request.method).toBe('GET');
+    req.flush(mockUsers);
   });
 });
