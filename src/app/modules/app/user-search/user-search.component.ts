@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UsersService } from '../../../users.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import {map} from 'rxjs/operators';
-import {combineLatest, interval, Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
+import { combineLatest, interval, Observable } from 'rxjs';
 import { User } from '../../../user';
 import { UserLocalstorageService } from '../../../user-localstorage.service';
 
@@ -25,15 +25,16 @@ export class UserSearchComponent implements OnInit {
   ngOnInit(): void {
     this.createSearchUserForm();
     this.searchUsers();
+    console.log(this.searchUsers$);
   }
 
-  private createSearchUserForm():void {
+  createSearchUserForm(): void {
     this.searchUserForm = new FormGroup({
       userFirstName: new FormControl(null),
     });
   }
 
-  searchUsers():void {
+  searchUsers(): void {
     this.searchUsers$ = combineLatest([
       this.userService.getUsers(),
       this.searchUserForm.get('userFirstName').valueChanges,

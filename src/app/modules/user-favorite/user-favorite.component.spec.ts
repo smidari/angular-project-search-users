@@ -3,8 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserFavoriteComponent } from './user-favorite.component';
 import { UserLocalstorageService } from '../../user-localstorage.service';
+import {ShareModule} from "../share/share.module";
 
-describe('UserSearchComponent component', () => {
+describe('UserFavoriteComponent component', () => {
   let fixture: ComponentFixture<UserFavoriteComponent>;
   let localService;
   let arrayUsers = [
@@ -19,7 +20,7 @@ describe('UserSearchComponent component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, ShareModule],
       declarations: [UserFavoriteComponent],
       providers: [UserLocalstorageService],
     });

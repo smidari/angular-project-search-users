@@ -11,7 +11,6 @@ describe('UserDetailComponent component', () => {
       imports: [HttpClientTestingModule],
       declarations: [UserDetailComponent],
     });
-
     fixture = TestBed.createComponent(UserDetailComponent);
   });
 

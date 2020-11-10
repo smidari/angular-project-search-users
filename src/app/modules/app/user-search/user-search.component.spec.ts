@@ -1,17 +1,48 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserSearchComponent } from './user-search.component';
-import { UsersService } from '../../../users.service';
-import { UserLocalstorageService } from '../../../user-localstorage.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormControl, FormGroup } from '@angular/forms';
+import { UsersService } from '../../../users.service';
+import {ShareModule} from "../../share/share.module";
+import {MatInputModule} from "@angular/material/input";
 
 describe('UserSearchComponent component', () => {
   let fixture: ComponentFixture<UserSearchComponent>;
+  let localService;
+  const userServiceStub = {
+    getUsers() {
+      return [
+        {
+          id: 5,
+          first_name: 'Ivan',
+          last_name: 'Petrov',
+          email: 'petrov@gmail.com',
+          avatar: 'sdf',
+        },
+        {
+          id: 6,
+          first_name: 'Dasha',
+          last_name: 'Petrov',
+          email: 'petrov@gmail.com',
+          avatar: 'sdf',
+        },
+        {
+          id: 7,
+          first_name: 'Misha',
+          last_name: 'Petrov',
+          email: 'petrov@gmail.com',
+          avatar: 'sdf',
+        },
+      ];
+    },
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, ShareModule, MatInputModule],
       declarations: [UserSearchComponent],
+      providers: [{ provide: UsersService, useValue: userServiceStub }],
     });
 
     fixture = TestBed.createComponent(UserSearchComponent);
@@ -35,7 +66,29 @@ describe('UserSearchComponent component', () => {
     expect(comp.selectedUser).toEqual(user);
   });
 
-  it('should', ()=>{
+  it('should create the form', () => {
+    const comp = fixture.componentInstance;
+    comp.createSearchUserForm();
+    expect(comp.searchUserForm).toBeDefined();
+  });
 
-  })
+  it('should return an array that has been filtered', () => {
+    const result = [
+      {
+        id: 5,
+        first_name: 'Ivan',
+        last_name: 'Petrov',
+        email: 'petrov@gmail.com',
+        avatar: 'sdf',
+      },
+    ];
+    const comp = fixture.componentInstance;
+    comp.searchUserForm = new FormGroup({
+      userFirstName: new FormControl('n'),
+    });
+    comp.searchUsers();
+    comp.searchUsers$.subscribe((r) => {
+      expect(r).toEqual(result);
+    });
+  });
 });
