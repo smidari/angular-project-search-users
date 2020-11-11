@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { cold } from 'jasmine-marbles';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {By} from "@angular/platform-browser";
 
 describe('UserSearchComponent component', () => {
   let fixture: ComponentFixture<UserSearchComponent>;
@@ -50,8 +51,12 @@ describe('UserSearchComponent component', () => {
     const expected = cold('-x-|', valuesAfter);
     comp.searchUsers();
 
-    comp.searchUserForm.get('userFirstName').setValue({ userFirstName: 'n' });
+    let input = fixture.debugElement.query(By.css('input'));
+    let inputElement = input.nativeElement;
+    inputElement.value = 'n';
+    inputElement.dispatchEvent(new Event('input'));
 
+   // comp.searchUserForm.get('userFirstName').setValue({ userFirstName: 'n' });
     expect(comp.searchUsers$).toBeObservable(expected);
   });
 
