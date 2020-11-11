@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UsersService } from '../../../users.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
-import { combineLatest, interval, Observable } from 'rxjs';
+import { combineLatest, Observable, of } from 'rxjs';
 import { User } from '../../../user';
 import { UserLocalstorageService } from '../../../user-localstorage.service';
 
@@ -25,7 +25,6 @@ export class UserSearchComponent implements OnInit {
   ngOnInit(): void {
     this.createSearchUserForm();
     this.searchUsers();
-    console.log(this.searchUsers$);
   }
 
   createSearchUserForm(): void {
@@ -40,8 +39,8 @@ export class UserSearchComponent implements OnInit {
       this.searchUserForm.get('userFirstName').valueChanges,
     ]).pipe(
       map(([users, value]) => {
-        return users.data.filter((user) => user.first_name.includes(value));
-      })
+      return users.data.filter((user) => user.first_name.includes(value));
+    })
     );
   }
 
@@ -56,4 +55,5 @@ export class UserSearchComponent implements OnInit {
   trackById(index, item): number {
     return item.id;
   }
+
 }
