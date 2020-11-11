@@ -36,7 +36,7 @@ export class UserSearchComponent implements OnInit {
   searchUsers(): void {
     this.searchUsers$ = combineLatest([
       this.userService.getUsers(),
-      this.searchUserForm.get('userFirstName').valueChanges,
+     this.searchUserForm.get('userFirstName').valueChanges,
     ]).pipe(
       map(([users, value]) => {
       return users.data.filter((user) => user.first_name.includes(value));

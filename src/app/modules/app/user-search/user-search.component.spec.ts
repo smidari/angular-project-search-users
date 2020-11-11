@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { filter, map } from 'rxjs/operators';
 import { cold } from 'jasmine-marbles';
 import { FormControl, FormGroup } from '@angular/forms';
-import { log } from 'util';
 
 describe('UserSearchComponent component', () => {
   let fixture: ComponentFixture<UserSearchComponent>;
@@ -16,44 +15,33 @@ describe('UserSearchComponent component', () => {
 
   beforeEach(() => {
     userService = jasmine.createSpy('UserService');
-
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, ShareModule, MatInputModule],
       declarations: [UserSearchComponent],
       providers: [{ provide: UsersService, useValue: userService }],
     });
-
     fixture = TestBed.createComponent(UserSearchComponent);
+  });
+
+  it('should return fitered array', () => {
+    const valuesGetUsers = {a: {data: [{first_name: 'Ivan'},{first_name: 'masha'}]}};
+    const valuesAfter = {x: [{first_name: 'Ivan'}]};
+
+    userService.getUsers = () => cold('-a-|', valuesGetUsers);
+
+    const comp = fixture.componentInstance;
+    comp.searchUserForm = new FormGroup({
+      userFirstName: new FormControl('n'),
+    });
+    const expected = cold('-x-|', valuesAfter);
+    comp.searchUsers();
+
+    expect(comp.searchUsers$).toBeObservable(expected);
   });
 
   it('should create', () => {
     const comp = fixture.componentInstance;
     expect(comp).toBeDefined();
-  });
-
-  it('should return a filtered array', () => {
-    const valuesGetUsers = {
-      a: { data: [] },
-    };
-    const valuesAfter = {
-      x: [
-        {
-          id: 5,
-          first_name: 'Ivan',
-          last_name: 'Petrov',
-          email: 'petrov@gmail.com',
-          avatar: 'sdf',
-        },
-      ],
-    };
-    userService.getUsers = () => cold('-a-|', valuesGetUsers);
-    const comp = fixture.componentInstance;
-    comp.searchUserForm = new FormGroup({
-      userFirstName: new FormControl('n'),
-    });
-
-    const expected = cold('-x-|', valuesAfter);
-    expect(comp.searchUsers$).toBeObservable(expected);
   });
 
   it('should set a selected user', () => {
