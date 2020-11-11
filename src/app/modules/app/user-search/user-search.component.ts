@@ -42,6 +42,12 @@ export class UserSearchComponent implements OnInit {
       return users.data.filter((user) => user.first_name.includes(value));
     })
     );
+    // let sda = this.searchUserForm.get('userFirstName').value;
+    // this.searchUsers$ = this.userService.getUsers().pipe(
+    //   map((users) => {
+    //     return users.data.filter((user) => user.first_name.includes(sda));
+    //   })
+    // );
   }
 
   addToFavourites(user: User): void {
@@ -55,5 +61,4 @@ export class UserSearchComponent implements OnInit {
   trackById(index, item): number {
     return item.id;
   }
-
 }

@@ -5,42 +5,57 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UsersService } from '../../../users.service';
 import { ShareModule } from '../../share/share.module';
 import { MatInputModule } from '@angular/material/input';
-import { filter, map } from 'rxjs/operators';
 import { cold } from 'jasmine-marbles';
-import { FormControl, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserSearchComponent component', () => {
   let fixture: ComponentFixture<UserSearchComponent>;
-  let userService;
+  let comp;
+  let service;
+  const valuesGetUsers = {
+    a: { data: [{ first_name: 'Ivan' }, { first_name: 'masha' }] },
+  };
 
   beforeEach(() => {
-    userService = jasmine.createSpy('UserService');
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, ShareModule, MatInputModule],
-      declarations: [UserSearchComponent],
-      providers: [{ provide: UsersService, useValue: userService }],
+    const myUsersService = jasmine.createSpyObj('UserService', {
+      getUsers() {
+        return cold('-a-|', valuesGetUsers);
+      },
     });
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        ShareModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+      ],
+      declarations: [UserSearchComponent],
+      providers: [{ provider: UsersService, useValue: myUsersService }],
+    });
+    service = TestBed.inject(UsersService);
+
     fixture = TestBed.createComponent(UserSearchComponent);
+    comp = fixture.componentInstance;
+  });
+  it('should create the form', () => {
+    comp.createSearchUserForm();
+    expect(comp.searchUserForm).toBeDefined();
   });
 
-  it('should return fitered array', () => {
-    const valuesGetUsers = {a: {data: [{first_name: 'Ivan'},{first_name: 'masha'}]}};
-    const valuesAfter = {x: [{first_name: 'Ivan'}]};
-
-    userService.getUsers = () => cold('-a-|', valuesGetUsers);
-
-    const comp = fixture.componentInstance;
-    comp.searchUserForm = new FormGroup({
-      userFirstName: new FormControl('n'),
-    });
+  it('should return filtered array', () => {
+    fixture.detectChanges();
+    const valuesAfter = { x: [{ first_name: 'Ivan' }] };
     const expected = cold('-x-|', valuesAfter);
     comp.searchUsers();
+
+    comp.searchUserForm.get('userFirstName').setValue({ userFirstName: 'n' });
 
     expect(comp.searchUsers$).toBeObservable(expected);
   });
 
   it('should create', () => {
-    const comp = fixture.componentInstance;
     expect(comp).toBeDefined();
   });
 
@@ -52,14 +67,7 @@ describe('UserSearchComponent component', () => {
       avatar: 'ivan.jpg',
       email: 'ivan@gmail.com',
     };
-    const comp = fixture.componentInstance;
     comp.getUserInformation(user);
     expect(comp.selectedUser).toEqual(user);
-  });
-
-  it('should create the form', () => {
-    const comp = fixture.componentInstance;
-    comp.createSearchUserForm();
-    expect(comp.searchUserForm).toBeDefined();
   });
 });
