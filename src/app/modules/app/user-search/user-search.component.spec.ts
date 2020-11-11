@@ -46,9 +46,7 @@ describe('UserSearchComponent component', () => {
         },
       ],
     };
-
-    userService.getUsers = () => cold('-a-|', 'sss');
-
+    userService.getUsers = () => cold('-a-|', valuesGetUsers);
     const comp = fixture.componentInstance;
     comp.searchUserForm = new FormGroup({
       userFirstName: new FormControl('n'),
