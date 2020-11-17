@@ -36,18 +36,12 @@ export class UserSearchComponent implements OnInit {
   searchUsers(): void {
     this.searchUsers$ = combineLatest([
       this.userService.getUsers(),
-     this.searchUserForm.get('userFirstName').valueChanges,
+      this.searchUserForm.get('userFirstName').valueChanges,
     ]).pipe(
       map(([users, value]) => {
-      return users.data.filter((user) => user.first_name.includes(value));
-    })
+        return users.data.filter((user) => user.first_name.includes(value));
+      })
     );
-    // let sda = this.searchUserForm.get('userFirstName').value;
-    // this.searchUsers$ = this.userService.getUsers().pipe(
-    //   map((users) => {
-    //     return users.data.filter((user) => user.first_name.includes(sda));
-    //   })
-    // );
   }
 
   addToFavourites(user: User): void {

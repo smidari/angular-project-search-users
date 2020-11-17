@@ -5,6 +5,7 @@
         <div>
           <mat-form-field>
             <input
+              id="sda"
               matInput
               formControlName="userFirstName"
               placeholder="Enter user's first name"
@@ -13,7 +14,7 @@
         </div>
       </form>
       <div>
-        <ul>
+        <ul class="user">
           <li *ngFor="let user of searchUsers$ | async; trackBy: trackById">
             <span>{{ user.first_name }}</span> {{ user.last_name }}
             <div class="btn">

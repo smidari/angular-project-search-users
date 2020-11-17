@@ -8,22 +8,24 @@ import { MatInputModule } from '@angular/material/input';
 import { cold } from 'jasmine-marbles';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {By} from "@angular/platform-browser";
+import { By } from '@angular/platform-browser';
 
 describe('UserSearchComponent component', () => {
   let fixture: ComponentFixture<UserSearchComponent>;
   let comp;
-  let service;
   const valuesGetUsers = {
     a: { data: [{ first_name: 'Ivan' }, { first_name: 'masha' }] },
   };
+  const valuesAfter = { x: [{ first_name: 'Ivan' }] };
+  let myUsersService;
+  let userService;
 
   beforeEach(() => {
-    const myUsersService = jasmine.createSpyObj('UserService', {
+    myUsersService = {
       getUsers() {
-        return cold('-a-|', valuesGetUsers);
+        return cold('a|', valuesGetUsers);
       },
-    });
+    };
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
@@ -33,31 +35,25 @@ describe('UserSearchComponent component', () => {
         ReactiveFormsModule,
       ],
       declarations: [UserSearchComponent],
-      providers: [{ provider: UsersService, useValue: myUsersService }],
+      providers: [{ provide: UsersService, useValue: myUsersService }],
     });
-    service = TestBed.inject(UsersService);
-
     fixture = TestBed.createComponent(UserSearchComponent);
     comp = fixture.componentInstance;
+    userService = TestBed.inject(UsersService);
   });
+
+  it('should return filtered array', async () => {
+    const expected = cold('x|', valuesAfter);
+    fixture.detectChanges();
+
+    comp.searchUserForm.setValue({ userFirstName: 'n' });
+
+    setTimeout(() => expect(comp.searchUsers$).toBeObservable(expected), 300);
+  });
+
   it('should create the form', () => {
     comp.createSearchUserForm();
     expect(comp.searchUserForm).toBeDefined();
-  });
-
-  it('should return filtered array', () => {
-    fixture.detectChanges();
-    const valuesAfter = { x: [{ first_name: 'Ivan' }] };
-    const expected = cold('-x-|', valuesAfter);
-    comp.searchUsers();
-
-    let input = fixture.debugElement.query(By.css('input'));
-    let inputElement = input.nativeElement;
-    inputElement.value = 'n';
-    inputElement.dispatchEvent(new Event('input'));
-
-   // comp.searchUserForm.get('userFirstName').setValue({ userFirstName: 'n' });
-    expect(comp.searchUsers$).toBeObservable(expected);
   });
 
   it('should create', () => {

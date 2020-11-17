@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { User } from '../../../user';
+import { User } from '../../../../user';
 
 @Component({
   selector: 'app-user-detail',
