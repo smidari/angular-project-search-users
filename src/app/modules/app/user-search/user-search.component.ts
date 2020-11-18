@@ -44,9 +44,9 @@ export class UserSearchComponent implements OnInit {
     );
   }
 
-  addToFavourites(user: User): void {
-    this.userLocalstorageService.saveFavouritesUsersToLocalStorage(user);
-  }
+  // addToFavourites(user: User): void {
+  //   this.userLocalstorageService.saveFavouritesUsersToLocalStorage(user);
+  // }
 
   getUserInformation(user: User): void {
     this.selectedUser = user;

@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserFavoriteComponent } from './user-favorite.component';
-import { UserLocalstorageService } from '../../user-localstorage.service';
-import {ShareModule} from "../share/share.module";
+import { UserLocalstorageService } from '../../../user-localstorage.service';
+import {ShareModule} from "../../share/share.module";
 
 describe('UserFavoriteComponent component', () => {
   let fixture: ComponentFixture<UserFavoriteComponent>;

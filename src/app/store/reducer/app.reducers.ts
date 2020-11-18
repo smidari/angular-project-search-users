@@ -2,8 +2,10 @@ import { userReducers } from './user.reducers';
 import { routerReducer } from '@ngrx/router-store';
 import { ActionReducerMap } from '@ngrx/store';
 import { IAppState } from '../state/app.state';
+import {userFavoriteReducers} from './user-favorite.reducers';
 
 export const appReducers: ActionReducerMap<IAppState, any> = {
   router: routerReducer,
   users: userReducers,
+  favoriteUsers: userFavoriteReducers
 };

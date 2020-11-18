@@ -1,10 +1,11 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, Output} from '@angular/core';
 import { User } from '../../../../user';
 
 @Component({
   selector: 'app-all-users',
   templateUrl: './all-users.component.html',
   styleUrls: ['./all-users.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllUsersComponent implements OnInit {
   @Input()
@@ -12,7 +13,6 @@ export class AllUsersComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.users);
   }
 
   trackById(index, item): number {

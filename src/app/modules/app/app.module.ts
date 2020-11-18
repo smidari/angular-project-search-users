@@ -15,6 +15,7 @@ import {StoreModule} from '@ngrx/store';
 import {appReducers} from '../../store/reducer/app.reducers';
 import {EffectsModule} from '@ngrx/effects';
 import {UserEffects} from '../../store/effects/user.effects';
+import {UserFavoriteEffects} from '../../store/effects/user-favorite.effects';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import {UserEffects} from '../../store/effects/user.effects';
     MatInputModule,
     ShareModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([UserEffects, UserFavoriteEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
