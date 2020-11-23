@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { UserSearchComponent } from './user-search/user-search.component';
 
 import { MatInputModule } from '@angular/material/input';
 
@@ -15,12 +14,18 @@ import {StoreModule} from '@ngrx/store';
 import {appReducers} from '../../store/reducer/app.reducers';
 import {EffectsModule} from '@ngrx/effects';
 import {UserEffects} from '../../store/effects/user.effects';
-import {UserFavoriteEffects} from '../../store/effects/user-favorite.effects';
+import {UserSearchComponent as UserSearchContainerComponent} from './container/user-search/user-search.component';
+import {UserSearchComponent} from './component/user-search/user-search.component';
+import {HomeComponent} from './component/home/home.component';
+import { IfWithTimerDirective } from './directives/if-with-timer.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserSearchComponent,
+    UserSearchContainerComponent,
+    HomeComponent,
+    IfWithTimerDirective
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,7 @@ import {UserFavoriteEffects} from '../../store/effects/user-favorite.effects';
     MatInputModule,
     ShareModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([UserEffects, UserFavoriteEffects]),
+    EffectsModule.forRoot([UserEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

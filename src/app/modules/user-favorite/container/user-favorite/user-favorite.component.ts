@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from '../../../../store/state/app.state';
 import { Router } from '@angular/router';
-import {selectUserFavoriteList} from '../../../../store/selectors/user-favorite.selector';
-import {GetUsersFavorite} from '../../../../store/action/user-favorite.action';
-import {of} from 'rxjs';
+import {GetUsersFavorite} from '../../../../store/action/user.action';
+import {selectFavoriteUserList} from '../../../../store/selectors/user.selector';
 
 
 @Component({
@@ -12,7 +11,7 @@ import {of} from 'rxjs';
   styleUrls: ['./user-favorite.component.css'],
 })
 export class UserFavoriteComponent implements OnInit {
-    usersFavorite$ = this.store.pipe(select(selectUserFavoriteList));
+    usersFavorite$ = this.store.pipe(select(selectFavoriteUserList));
 
   constructor(private store: Store<IAppState>, private router: Router) {}
 

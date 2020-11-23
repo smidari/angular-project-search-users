@@ -18,12 +18,9 @@ import { UserLocalstorageService } from '../../../user-localstorage.service';
 })
 export class UserFavoriteComponent implements OnInit {
   @Input() favouritesUsers: User[];
-  // @Output()
-  // userFavoriteSelected: EventEmitter<number> = new EventEmitter();
+
   selectedFavouritesUser: User;
-  // constructor(
-  //   private userService: UsersService,
-  // ) {}
+
   constructor() {}
   ngOnInit(): void {}
 

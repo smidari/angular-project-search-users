@@ -12,6 +12,18 @@ export const userReducers = (
         users: action.payload,
       };
     }
+    case EUserActions.GetUsersFavoriteSuccess: {
+      return {
+        ...state,
+        favoriteUsers: action.payload,
+      };
+    }
+    case EUserActions.SetInputValueSearchUser: {
+      return {
+        ...state,
+        inputValueSearchUser: action.payload,
+      };
+    }
     default:
       return state;
   }

@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserSearchComponent } from './user-search.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { UsersService } from '../../../users.service';
-import { ShareModule } from '../../share/share.module';
+import { UsersService } from '../../../../users.service';
+import { ShareModule } from '../../../share/share.module';
 import { MatInputModule } from '@angular/material/input';
 import { cold } from 'jasmine-marbles';
 import { ReactiveFormsModule } from '@angular/forms';

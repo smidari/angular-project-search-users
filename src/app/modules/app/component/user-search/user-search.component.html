@@ -3,9 +3,9 @@
     <div class="search">
       <form [formGroup]="searchUserForm">
         <div>
+
           <mat-form-field>
             <input
-              id="sda"
               matInput
               formControlName="userFirstName"
               placeholder="Enter user's first name"
@@ -15,7 +15,7 @@
       </form>
       <div>
         <ul class="user">
-          <li *ngFor="let user of searchUsers$ | async; trackBy: trackById">
+          <li *ngFor="let user of usersSortForInputValue; trackBy: trackById">
             <span>{{ user.first_name }}</span> {{ user.last_name }}
             <div class="btn">
               <button (click)="addToFavourites(user)">add</button>
