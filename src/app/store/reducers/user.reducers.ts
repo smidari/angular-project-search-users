@@ -1,9 +1,5 @@
 import { initialUserState, IUserState } from '../state/user.state';
-import {
-  AddFavoriteUserSuccess,
-  EUserActions,
-  UserActions,
-} from '../action/user.action';
+import { EUserActions, UserActions } from '../actions/user.action';
 
 export const userReducers = (
   state = initialUserState,

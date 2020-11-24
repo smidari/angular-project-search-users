@@ -6,7 +6,7 @@ import {
   AddFavoriteUser,
   GetUsers,
   SetInputValueSearchUser,
-} from '../../../../store/action/user.action';
+} from '../../../../store/actions/user.action';
 import { selectUsersSortForInputValue } from '../../../../store/selectors/user.selector';
 import { User } from '../../../../user';
 

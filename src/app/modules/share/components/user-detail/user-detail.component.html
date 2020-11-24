@@ -1,6 +1,10 @@
 <div *ngIf="user">
-  <div><img src="{{ user.avatar }}" alt="avatar" /></div>
-  <div><span>first name: </span>{{ user.first_name }}</div>
-  <div><span>last name: </span>{{ user.last_name }}</div>
-  <div><span>email: </span>{{ user.email }}</div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title
+        >{{ user.first_name }} {{ user.last_name }}</mat-card-title
+      >
+    </mat-card-header>
+    <img mat-card-image src="{{ user.avatar }}" alt="Photo" />
+  </mat-card>
 </div>

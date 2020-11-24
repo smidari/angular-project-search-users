@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from '../../../../store/state/app.state';
 import { selectUserList } from '../../../../store/selectors/user.selector';
-import { GetUsers } from '../../../../store/action/user.action';
+import { GetUsers } from '../../../../store/actions/user.action';
 
 @Component({
   templateUrl: './all-users.component.html',

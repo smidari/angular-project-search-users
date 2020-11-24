@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from '../../../../store/state/app.state';
 import { Router } from '@angular/router';
-import {GetUsersFavorite} from '../../../../store/action/user.action';
+import {GetUsersFavorite} from '../../../../store/actions/user.action';
 import {selectFavoriteUserList} from '../../../../store/selectors/user.selector';
 
 

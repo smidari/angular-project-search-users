@@ -9,13 +9,10 @@ export class IfWithTimerDirective {
       // показать
       this.viewContainer.createEmbeddedView(this.templateRef);
       setTimeout(() => {
-        // condition = !condition;
         this.viewContainer.clear();
-      }, 1000);
+      }, 5000);
     }
   }
-
-
 
   constructor(
     private templateRef: TemplateRef<any>,

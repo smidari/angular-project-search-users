@@ -8,7 +8,7 @@ import {
   GetUsersFavorite,
   GetUsersFavoriteSuccess,
   GetUsersSuccess,
-} from '../action/user.action';
+} from '../actions/user.action';
 import { concatMap, pluck, switchMap, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { UsersService } from '../../users.service';

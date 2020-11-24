@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { User } from '../../../../user';
+import { User } from '../../../user';
 import { of } from 'rxjs';
 
 @Component({

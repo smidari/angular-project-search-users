@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {MyValidators} from '../../my-validators';
 
 @Component({
   selector: 'app-form-sign-in',
@@ -12,7 +13,7 @@ export class FormSignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required]),
+      email: new FormControl('', [Validators.email, Validators.required, MyValidators.restrictedEmails]),
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(6),
