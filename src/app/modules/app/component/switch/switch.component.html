@@ -1,0 +1,8 @@
+<div class="switch">
+  <button [class.active]="state === 'on'" (click)="setState('on')">on</button>
+  <button [class.active]="state === 'off'" (click)="setState('off')">
+    off
+  </button>
+
+  <p>State: {{ state }}</p>
+</div>

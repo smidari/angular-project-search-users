@@ -18,13 +18,15 @@ import {HomeComponent} from './component/home/home.component';
 import { IfWithTimerDirective } from './directives/if-with-timer.directive';
 import { FormSignInComponent } from './component/form-sign-in/form-sign-in.component';
 import {MatTableModule} from '@angular/material/table';
+import { SwitchComponent } from './component/switch/switch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     IfWithTimerDirective,
-    FormSignInComponent
+    FormSignInComponent,
+    SwitchComponent
   ],
   imports: [
     BrowserModule,

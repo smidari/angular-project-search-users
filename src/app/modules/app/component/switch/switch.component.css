@@ -1,0 +1,14 @@
+.switch {
+  display: inline-block;
+}
+.switch button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  background-color: red;
+  outline: none;
+}
+.switch button.active {
+  background-color: green;
+}

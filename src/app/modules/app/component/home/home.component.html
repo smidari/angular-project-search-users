@@ -1,13 +1,21 @@
 <div class="wrapp">
   <div class="content">
-<!--    <div><button (click)="isVisible = !isVisible">Toggle</button></div>-->
+    <!--    <div><button (click)="isVisible = !isVisible">Toggle</button></div>-->
     <div>
       <div *appIfWithTimer="true">
-        <div>
-           <h2> Welcome </h2>
-        </div>
+        <h2>Welcome!</h2>
+        <p>My Directive which disappears after 5 seconds</p>
       </div>
     </div>
-    <app-form-sign-in></app-form-sign-in>
+    <div class="form">
+      <h2>Reactive Forms. Validators</h2>
+      <app-form-sign-in></app-form-sign-in>
+    </div>
+
+    <div>
+      <h2>ControlValueAccessor</h2>
+      <app-switch [(ngModel)]="homeState"></app-switch>
+    </div>
+    <p>homeState: {{ homeState }}</p>
   </div>
 </div>

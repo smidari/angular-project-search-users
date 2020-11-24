@@ -33,6 +33,8 @@
         >
       </div>
     </div>
-    <button type="submit" [disabled]="form.invalid">Sign in</button>
+    <button type="submit" [disabled]="form.invalid || form.pending">
+      Sign in
+    </button>
   </form>
 </div>
