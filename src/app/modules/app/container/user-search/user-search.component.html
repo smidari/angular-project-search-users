@@ -1,4 +1,5 @@
 <app-user-search
   [usersSortForInputValue]="usersSortForInputValue$ | async"
   (setInputValue)="setInputValueSearchUser($event)"
+  (newUser)="addFavoriteUser($event)"
 ></app-user-search>

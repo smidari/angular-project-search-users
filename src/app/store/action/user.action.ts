@@ -7,6 +7,8 @@ export enum EUserActions {
   GetUsersFavorite = 'Get Users Favorite',
   GetUsersFavoriteSuccess = 'Get Users Favorite Success',
   SetInputValueSearchUser = 'Set Input Value Search User',
+  AddFavoriteUser = 'Add Favorite User',
+  AddFavoriteUserSuccess = 'Add Favorite User Success',
 }
 
 export class GetUsers implements Action {
@@ -32,9 +34,21 @@ export class SetInputValueSearchUser implements Action {
   constructor(public payload: string) {}
 }
 
+export class AddFavoriteUser implements Action {
+  public readonly type = EUserActions.AddFavoriteUser;
+  constructor(public payload: User) {}
+}
+
+export class AddFavoriteUserSuccess implements Action {
+  public readonly type = EUserActions.AddFavoriteUserSuccess;
+  constructor(public payload: User) {}
+}
+
 export type UserActions =
   | GetUsers
   | GetUsersSuccess
   | GetUsersFavorite
   | GetUsersFavoriteSuccess
-  | SetInputValueSearchUser;
+  | SetInputValueSearchUser
+  | AddFavoriteUser
+  | AddFavoriteUserSuccess;

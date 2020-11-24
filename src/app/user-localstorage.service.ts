@@ -13,13 +13,14 @@ export class UserLocalstorageService {
     return of(JSON.parse(localStorage.getItem(FAVOURITES) as string));
   }
 
-  // saveFavouritesUsersToLocalStorage(user: User): void {
-  //   let users = this.getFavouritesUsersFromLocalStorage();
-  //   if (!users) {
-  //     localStorage.setItem(FAVOURITES, JSON.stringify([user]));
-  //   } else if (users && !users.some((item) => item.id === user.id)) {
-  //     users = [...users, user];
-  //     localStorage.setItem(FAVOURITES, JSON.stringify(users));
-  //   }
-  // }
+  saveFavouritesUsersToLocalStorage(user: User): Observable<User> {
+    let users = JSON.parse(localStorage.getItem(FAVOURITES));
+    if (!users) {
+      localStorage.setItem(FAVOURITES, JSON.stringify([user]));
+    } else if (users && !users.some((item) => item.id === user.id)) {
+      users = [...users, user];
+      localStorage.setItem(FAVOURITES, JSON.stringify(users));
+    }
+    return of(user);
+  }
 }

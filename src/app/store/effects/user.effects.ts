@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import {
+  AddFavoriteUser,
+  AddFavoriteUserSuccess,
   EUserActions,
   GetUsers,
   GetUsersFavorite,
   GetUsersFavoriteSuccess,
   GetUsersSuccess,
 } from '../action/user.action';
-import { switchMap } from 'rxjs/operators';
+import { concatMap, pluck, switchMap, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { UsersService } from '../../users.service';
 import { User, UserApi } from '../../user';
@@ -18,23 +20,27 @@ export class UserEffects {
   @Effect()
   getUsers$ = this.actions$.pipe(
     ofType<GetUsers>(EUserActions.GetUsers),
-    switchMap(() => {
-      return this.usersService.getUsers();
-    }),
+    switchMap(() => this.usersService.getUsers()),
     switchMap((usersApi: UserApi) => of(new GetUsersSuccess(usersApi.data)))
   );
 
   @Effect() getUsersFavorite$ = this.actions$.pipe(
     ofType<GetUsersFavorite>(EUserActions.GetUsersFavorite),
-    switchMap(() => {
-      return this.userLocalstorageService.getFavouritesUsersFromLocalStorage();
-    }),
-    switchMap((users: User[]) => {
-      return of(new GetUsersFavoriteSuccess(users));
-    })
+    switchMap(() =>
+      this.userLocalstorageService.getFavouritesUsersFromLocalStorage()
+    ),
+    switchMap((users: User[]) => of(new GetUsersFavoriteSuccess(users)))
   );
 
-  // @Effect() addToNewFavoriteUser$ = this.actions$.pipe()
+  @Effect() addToNewFavoriteUser$ = this.actions$.pipe(
+    ofType<AddFavoriteUser>(EUserActions.AddFavoriteUser),
+    switchMap((user) => {
+      return this.userLocalstorageService.saveFavouritesUsersToLocalStorage(
+        user.payload
+      );
+    }),
+    switchMap((user: User) => of(new AddFavoriteUserSuccess(user)))
+  );
 
   constructor(
     private usersService: UsersService,

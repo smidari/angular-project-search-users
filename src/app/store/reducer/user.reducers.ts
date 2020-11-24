@@ -1,5 +1,9 @@
 import { initialUserState, IUserState } from '../state/user.state';
-import { EUserActions, UserActions } from '../action/user.action';
+import {
+  AddFavoriteUserSuccess,
+  EUserActions,
+  UserActions,
+} from '../action/user.action';
 
 export const userReducers = (
   state = initialUserState,
@@ -22,6 +26,12 @@ export const userReducers = (
       return {
         ...state,
         inputValueSearchUser: action.payload,
+      };
+    }
+    case EUserActions.AddFavoriteUserSuccess: {
+      return {
+        ...state,
+        favoriteUsers: [...state.favoriteUsers, action.payload],
       };
     }
     default:

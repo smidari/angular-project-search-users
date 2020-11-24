@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../../../../user';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-user-search',
@@ -20,6 +21,7 @@ export class UserSearchComponent implements OnInit {
   selectedUser: User;
   @Input() usersSortForInputValue: User[];
   @Output() setInputValue: EventEmitter<string> = new EventEmitter<string>();
+  @Output() newUser: EventEmitter<User> = new EventEmitter<User>();
 
   constructor() {}
 
@@ -35,9 +37,9 @@ export class UserSearchComponent implements OnInit {
     });
   }
 
-  // addToFavourites(user: User): void {
-  //   this.userLocalstorageService.saveFavouritesUsersToLocalStorage(user);
-  // }
+  addToFavourites(user: User): void {
+    of(user).subscribe((value) => this.newUser.emit(value));
+  }
 
   getUserInformation(user: User): void {
     this.selectedUser = user;
