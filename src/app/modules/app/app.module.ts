@@ -18,6 +18,7 @@ import {UserSearchComponent as UserSearchContainerComponent} from './container/u
 import {UserSearchComponent} from './component/user-search/user-search.component';
 import {HomeComponent} from './component/home/home.component';
 import { IfWithTimerDirective } from './directives/if-with-timer.directive';
+import { FormSignInComponent } from './component/form-sign-in/form-sign-in.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { IfWithTimerDirective } from './directives/if-with-timer.directive';
     UserSearchComponent,
     UserSearchContainerComponent,
     HomeComponent,
-    IfWithTimerDirective
+    IfWithTimerDirective,
+    FormSignInComponent
   ],
   imports: [
     BrowserModule,
