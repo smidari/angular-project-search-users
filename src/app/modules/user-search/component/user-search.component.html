@@ -1,50 +1,31 @@
 <div class="wrapper">
   <div class="container">
-    <div class="search">
+    <div>
       <form [formGroup]="searchUserForm">
-        <div>
-          <mat-form-field>
-            <input
-              matInput
-              formControlName="userFirstName"
-              placeholder="Enter user's first name"
-            />
-          </mat-form-field>
-        </div>
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="userFirstName"
+            placeholder="Enter user's first name"
+          />
+        </mat-form-field>
       </form>
-      <div>
-        <!--        <ul class="user">-->
-        <!--          <li *ngFor="let user of usersSortForInputValue; trackBy: trackById">-->
-        <!--            <span>{{ user.first_name }}</span> {{ user.last_name }}-->
-        <!--            <div class="btn">-->
-        <!--              <button (click)="addToFavourites(user)">add</button>-->
-        <!--              <button (click)="getUserInformation(user)">-->
-        <!--                More information-->
-        <!--              </button>-->
-        <!--            </div>-->
-        <!--          </li>-->
-        <!--        </ul>-->
-        <mat-selection-list>
-          <mat-list-item
-            *ngFor="let user of usersSortForInputValue; trackBy: trackById"
-          >
-            <img matListAvatar src="{{ user.avatar }}" alt="avatar" />
-            <p matLine>
-              <span> {{ user.first_name }} {{ user.last_name }}</span>
-            </p>
-            <button mat-mini-fab color="black" (click)="addToFavourites(user)">
-              <mat-icon>add</mat-icon>
-            </button>
-            <button
-              mat-mini-fab
-              color="black"
-              (click)="getUserInformation(user)"
-            >
-              <mat-icon>more</mat-icon>
-            </button>
-          </mat-list-item>
-        </mat-selection-list>
-      </div>
+      <mat-selection-list>
+        <mat-list-item
+          *ngFor="let user of usersSortForInputValue; trackBy: trackById"
+        >
+          <img matListAvatar src="{{ user.avatar }}" alt="avatar" />
+          <p matLine>
+            <span> {{ user.first_name }} {{ user.last_name }}</span>
+          </p>
+          <button mat-mini-fab color="black" (click)="addToFavourites(user)">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-mini-fab color="black" (click)="getUserInformation(user)">
+            <mat-icon>more</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-selection-list>
     </div>
     <div class="cards">
       <app-user-detail [user]="selectedUser"></app-user-detail>

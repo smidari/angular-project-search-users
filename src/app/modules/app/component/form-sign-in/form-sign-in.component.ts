@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MyValidators } from '../../my-validators';
+import { MyValidators } from '../../validators/my-validators';
 import { UsersService } from '../../../../users.service';
 
 @Component({
