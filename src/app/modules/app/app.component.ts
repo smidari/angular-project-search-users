@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../store/state/app.state';
 
@@ -8,6 +13,7 @@ import { IAppState } from '../../store/state/app.state';
   styleUrls: ['./app.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(private store: Store<IAppState>) {}
+  ngOnInit(): void {}
 }

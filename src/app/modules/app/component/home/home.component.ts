@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  homeState = 'on';
+  homeState: string;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.homeState = 'on';
+  }
 }

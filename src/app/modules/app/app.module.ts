@@ -9,15 +9,15 @@ import { AppComponent } from './app.component';
 
 import { MatInputModule } from '@angular/material/input';
 
-import {ShareModule} from '../share/share.module';
-import {StoreModule} from '@ngrx/store';
-import {appReducers} from '../../store/reducers/app.reducers';
-import {EffectsModule} from '@ngrx/effects';
-import {UserEffects} from '../../store/effects/user.effects';
-import {HomeComponent} from './component/home/home.component';
+import { ShareModule } from '../share/share.module';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from '../../store/reducers/app.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from '../../store/effects/user.effects';
+import { HomeComponent } from './component/home/home.component';
 import { IfWithTimerDirective } from './directives/if-with-timer.directive';
 import { FormSignInComponent } from './component/form-sign-in/form-sign-in.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { SwitchComponent } from './component/switch/switch.component';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { SwitchComponent } from './component/switch/switch.component';
     HomeComponent,
     IfWithTimerDirective,
     FormSignInComponent,
-    SwitchComponent
+    SwitchComponent,
   ],
   imports: [
     BrowserModule,

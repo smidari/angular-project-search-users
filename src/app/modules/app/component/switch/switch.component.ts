@@ -13,7 +13,7 @@ const VALUE_ACCESSOR: Provider = {
   providers: [VALUE_ACCESSOR],
 })
 export class SwitchComponent implements ControlValueAccessor {
-  state = 'off';
+  state = 'on';
   private onChange = (value: any) => {};
 
   setState(state: string): void {
