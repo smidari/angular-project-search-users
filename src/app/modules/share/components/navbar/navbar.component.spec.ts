@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NavbarComponent } from './navbar.component';
-import {CommonModule} from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
 
 describe('NavbarComponent component', () => {

@@ -1,14 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
   OnInit,
-  Output,
 } from '@angular/core';
 import { User } from '../../../user';
-import { UsersService } from '../../../users.service';
-import { UserLocalstorageService } from '../../../user-localstorage.service';
 
 @Component({
   selector: 'app-user-favorite',

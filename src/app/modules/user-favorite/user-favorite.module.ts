@@ -4,10 +4,11 @@ import { UserFavoriteComponent } from './component/user-favorite.component';
 import { ShareModule } from '../share/share.module';
 import { UserFavoriteRoutingModule } from './user-favorite-routing.module';
 import { UserFavoriteComponent as UserFavoriteContainerComponent } from './container/user-favorite/user-favorite.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [UserFavoriteComponent, UserFavoriteContainerComponent],
-  imports: [CommonModule, ShareModule, UserFavoriteRoutingModule],
+  imports: [CommonModule, ShareModule, UserFavoriteRoutingModule, MatListModule],
   exports: [],
 })
 export class UserFavoriteModule {}

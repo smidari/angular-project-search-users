@@ -13,7 +13,6 @@ export class FormSignInComponent implements OnInit {
   constructor(private userService: UsersService) {}
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(data => console.log(data.data));
     this.form = new FormGroup({
       email: new FormControl(
         '',

@@ -1,13 +1,18 @@
 <div class="wrapper">
   <div class="container">
-    <ul class="users">
-      <li
-        *ngFor="let user of favouritesUsers; trackBy: trackById"
-        (click)="onSelect(user)"
-      >
-        <span>{{ user.last_name }}</span> {{ user.first_name }}
-      </li>
-    </ul>
+    <mat-selection-list>
+      <mat-list-item *ngFor="let user of favouritesUsers; trackBy: trackById">
+        <img
+          matListAvatar
+          src="{{ user.avatar }}"
+          alt="avatar"
+          (click)="onSelect(user)"
+        />
+        <p matLine>
+          <span> {{ user.first_name }} {{ user.last_name }}</span>
+        </p>
+      </mat-list-item>
+    </mat-selection-list>
     <div class="cards">
       <app-user-detail [user]="selectedFavouritesUser"></app-user-detail>
     </div>

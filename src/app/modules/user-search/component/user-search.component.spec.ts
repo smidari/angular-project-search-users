@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { cold } from 'jasmine-marbles';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { By } from '@angular/platform-browser';
 
 describe('UserSearchComponent component', () => {
   let fixture: ComponentFixture<UserSearchComponent>;

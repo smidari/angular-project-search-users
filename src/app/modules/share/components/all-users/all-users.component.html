@@ -1,9 +1,15 @@
 <div class="wrapper">
   <div class="container">
-    <ul class="users">
-      <li *ngFor="let user of users; trackBy: trackById">
-        <span>{{ user.last_name }}</span> {{ user.first_name }}
-      </li>
-    </ul>
+    <!--    <ul class="users">-->
+    <!--      <li *ngFor="let user of users; trackBy: trackById">-->
+    <!--        <span>{{ user.last_name }}</span> {{ user.first_name }}-->
+    <!--      </li>-->
+    <!--    </ul>-->
+    <mat-selection-list>
+      <mat-list-item *ngFor="let user of users; trackBy: trackById">
+        <img matListAvatar src="{{ user.avatar }}" alt="..." />
+        <span> {{ user.first_name }} {{ user.last_name }}</span>
+      </mat-list-item>
+    </mat-selection-list>
   </div>
 </div>

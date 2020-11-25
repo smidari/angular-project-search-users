@@ -9,7 +9,7 @@ import {
   GetUsersFavoriteSuccess,
   GetUsersSuccess,
 } from '../actions/user.action';
-import { concatMap, pluck, switchMap, map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { UsersService } from '../../users.service';
 import { User, UserApi } from '../../user';

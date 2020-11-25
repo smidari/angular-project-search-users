@@ -6,6 +6,9 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserSearchRoutingModule } from './user-search-routing.module';
 import {CommonModule} from '@angular/common';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import {CommonModule} from '@angular/common';
     ReactiveFormsModule,
     UserSearchRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [],
 })
