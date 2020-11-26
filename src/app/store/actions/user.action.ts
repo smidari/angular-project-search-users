@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import {Action, createAction} from '@ngrx/store';
 import { User } from '../../user';
 
 export enum EUserActions {
@@ -11,9 +11,11 @@ export enum EUserActions {
   AddFavoriteUserSuccess = 'Add Favorite User Success',
 }
 
-export class GetUsers implements Action {
-  public readonly type = EUserActions.GetUsers;
-}
+// export class GetUsers implements Action {
+//   public readonly type = EUserActions.GetUsers;
+// }
+
+export const GetUsers = createAction('[Counter] Increment');
 
 export class GetUsersSuccess implements Action {
   public readonly type = EUserActions.GetUsersSuccess;

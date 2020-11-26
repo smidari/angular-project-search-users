@@ -7,3 +7,7 @@ a{
 a:hover{
   color: #50a1ff;
 }
+
+.active{
+  color:  #50a1ff;
+}

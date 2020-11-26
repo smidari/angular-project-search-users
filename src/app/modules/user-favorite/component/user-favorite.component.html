@@ -11,6 +11,9 @@
         <p matLine>
           <span> {{ user.first_name }} {{ user.last_name }}</span>
         </p>
+        <button mat-icon-button color="black" (click)="deleteFavoriteUser(user)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-list-item>
     </mat-selection-list>
     <div class="cards">

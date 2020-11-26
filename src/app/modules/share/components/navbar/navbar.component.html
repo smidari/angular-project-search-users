@@ -1,8 +1,13 @@
 <div>
-  <mat-toolbar color=primary>
-    <a routerLink="/">Home</a>
-    <a routerLink="/users">All users</a>
-    <a routerLink="/search">Search</a>
-    <a routerLink="/favorite">Favorite users</a>
+  <mat-toolbar color="primary">
+    <a
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLink="/"
+      >Home</a
+    >
+    <a routerLinkActive="active" routerLink="/users">All users</a>
+    <a routerLinkActive="active" routerLink="/search">Search</a>
+    <a routerLinkActive="active" routerLink="/favorite">Favorite users</a>
   </mat-toolbar>
 </div>

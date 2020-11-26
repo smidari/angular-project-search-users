@@ -1,10 +1,11 @@
 import {
   ChangeDetectionStrategy,
-  Component,
+  Component, EventEmitter,
   Input,
-  OnInit,
+  OnInit, Output,
 } from '@angular/core';
 import { User } from '../../../user';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-user-favorite',
@@ -14,7 +15,7 @@ import { User } from '../../../user';
 })
 export class UserFavoriteComponent implements OnInit {
   @Input() favouritesUsers: User[];
-
+  @Output() deleteUser: EventEmitter<User> = new EventEmitter<User>();
   selectedFavouritesUser: User;
 
   constructor() {}
@@ -26,5 +27,9 @@ export class UserFavoriteComponent implements OnInit {
 
   trackById(index, item): number {
     return item.id;
+  }
+
+  deleteFavoriteUser(user: User): void {
+    of(user).subscribe((value) => this.deleteUser.emit(value));
   }
 }
