@@ -21,14 +21,15 @@ export class UserSearchComponent implements OnInit {
   constructor(private store: Store<IAppState>, private router: Router) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new GetUsers());
+    // this.store.dispatch(new GetUsers());
+    this.store.dispatch(GetUsers());
   }
 
   setInputValueSearchUser(value: string): void {
-    this.store.dispatch(new SetInputValueSearchUser(value));
+    this.store.dispatch(SetInputValueSearchUser({ value }));
   }
 
   addFavoriteUser(user: User): void {
-    this.store.dispatch(new AddFavoriteUser(user));
+    this.store.dispatch(AddFavoriteUser({user}));
   }
 }

@@ -1,4 +1,4 @@
-import {Action, createAction} from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { User } from '../../user';
 
 export enum EUserActions {
@@ -11,46 +11,36 @@ export enum EUserActions {
   AddFavoriteUserSuccess = 'Add Favorite User Success',
 }
 
-// export class GetUsers implements Action {
-//   public readonly type = EUserActions.GetUsers;
-// }
+export const GetUsers = createAction(EUserActions.GetUsers);
+export const GetUsersSuccess = createAction(
+  EUserActions.GetUsersSuccess,
+  props<{ users: User[] }>()
+);
 
-export const GetUsers = createAction('[Counter] Increment');
+export const GetUsersFavorite = createAction(EUserActions.GetUsersFavorite);
+export const GetUsersFavoriteSuccess = createAction(
+  EUserActions.GetUsersFavoriteSuccess,
+  props<{ favoriteUsers: User[] }>()
+);
 
-export class GetUsersSuccess implements Action {
-  public readonly type = EUserActions.GetUsersSuccess;
-  constructor(public payload: User[]) {}
-}
+export const SetInputValueSearchUser = createAction(
+  EUserActions.SetInputValueSearchUser,
+  props<{ value: string }>()
+);
 
-export class GetUsersFavorite implements Action {
-  public readonly type = EUserActions.GetUsersFavorite;
-}
-
-export class GetUsersFavoriteSuccess implements Action {
-  public readonly type = EUserActions.GetUsersFavoriteSuccess;
-  constructor(public payload: User[]) {}
-}
-
-export class SetInputValueSearchUser implements Action {
-  public readonly type = EUserActions.SetInputValueSearchUser;
-  constructor(public payload: string) {}
-}
-
-export class AddFavoriteUser implements Action {
-  public readonly type = EUserActions.AddFavoriteUser;
-  constructor(public payload: User) {}
-}
-
-export class AddFavoriteUserSuccess implements Action {
-  public readonly type = EUserActions.AddFavoriteUserSuccess;
-  constructor(public payload: User) {}
-}
-
-export type UserActions =
-  | GetUsers
-  | GetUsersSuccess
-  | GetUsersFavorite
-  | GetUsersFavoriteSuccess
-  | SetInputValueSearchUser
-  | AddFavoriteUser
-  | AddFavoriteUserSuccess;
+export const AddFavoriteUser = createAction(
+  EUserActions.AddFavoriteUser,
+  props<{ user: User }>()
+);
+export const AddFavoriteUserSuccess = createAction(
+  EUserActions.AddFavoriteUserSuccess,
+  props<{ user }>()
+);
+export type UserActions = any;
+// | GetUsers
+// | GetUsersSuccess
+// | GetUsersFavorite
+// | GetUsersFavoriteSuccess
+// | SetInputValueSearchUser
+// | AddFavoriteUser
+// | AddFavoriteUserSuccess;

@@ -21,6 +21,7 @@ export class UserLocalstorageService {
   }
 
   saveFavouritesUsersToLocalStorage(user: User): Observable<User> {
+    console.log('localstorage', user);
     let users = JSON.parse(this.storage.getItem(FAVOURITES));
     if (!users) {
       this.storage.setItem(FAVOURITES, JSON.stringify([user]));

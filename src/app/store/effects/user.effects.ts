@@ -3,7 +3,6 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import {
   AddFavoriteUser,
   AddFavoriteUserSuccess,
-  EUserActions,
   GetUsers,
   GetUsersFavorite,
   GetUsersFavoriteSuccess,
@@ -19,32 +18,40 @@ import { of } from 'rxjs';
 export class UserEffects {
   @Effect()
   getUsers$ = this.actions$.pipe(
-    ofType<GetUsers>(EUserActions.GetUsers),
+    ofType(GetUsers),
     switchMap(() =>
       this.usersService.getUsers().pipe(
-        map((usersApi: UserApi) => new GetUsersSuccess(usersApi.data)),
+        map((usersApi: UserApi) => {
+          return GetUsersSuccess({ users: usersApi.data });
+        }),
         catchError((err) => of(`I caught: ${err}`))
       )
     )
   );
 
   @Effect() getUsersFavorite$ = this.actions$.pipe(
-    ofType<GetUsersFavorite>(EUserActions.GetUsersFavorite),
+    ofType(GetUsersFavorite),
     switchMap(() =>
       this.userLocalstorageService.getFavouritesUsersFromLocalStorage().pipe(
-        map((users: User[]) => new GetUsersFavoriteSuccess(users)),
+        map((users: User[]) =>
+          GetUsersFavoriteSuccess({ favoriteUsers: users })
+        ),
         catchError((err) => of(`I caught: ${err}`))
       )
     )
   );
 
   @Effect() addToNewFavoriteUser$ = this.actions$.pipe(
-    ofType<AddFavoriteUser>(EUserActions.AddFavoriteUser),
+    ofType(AddFavoriteUser),
     switchMap((user) => {
+      console.log('effect', user);
       return this.userLocalstorageService
-        .saveFavouritesUsersToLocalStorage(user.payload)
+        .saveFavouritesUsersToLocalStorage(user.user)
         .pipe(
-          map((value: User) => new AddFavoriteUserSuccess(value)),
+          map((value: User) => {
+            console.log(value);
+            return AddFavoriteUserSuccess({ user: value });
+          }),
           catchError((err) => of(`I caught: ${err}`))
         );
     })
