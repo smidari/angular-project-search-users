@@ -1,3 +1,10 @@
+.nav-bar{
+  background-color: #030504;
+  color: white;
+  box-shadow: 7px 7px 5px 0px rgba(253, 244, 255, 0);
+  opacity: 0.9;
+}
+
 a{
   text-decoration: none;
   color: #fffbff;
@@ -5,11 +12,11 @@ a{
 }
 
 a:hover{
-  color: #50a1ff;
+  color: rgb(102, 103, 255);
 }
 
 .active{
-  color:  #50a1ff;
+  color: rgb(102, 103, 255);;
 }
 
 .spacer {

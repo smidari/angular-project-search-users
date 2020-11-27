@@ -14,12 +14,18 @@
         <mat-list-item
           *ngFor="let user of usersSortForInputValue; trackBy: trackById"
         >
-<!--          [routerLink]="['/user', user.id ]-->
-          <img matListAvatar  src="{{ user.avatar }}" alt="avatar" />
+          <!--          [routerLink]="['/user', user.id ]-->
+          <img matListAvatar src="{{ user.avatar }}" alt="avatar" />
           <p matLine>
             <span> {{ user.first_name }} {{ user.last_name }}</span>
           </p>
-          <button mat-mini-fab color="black" (click)="addToFavourites(user)">
+          <button
+            class="btn-add"
+            mat-mini-fab
+            color="black"
+            (click)="addToFavourites(user)"
+            [disabled]="mySome(user.id)"
+          >
             <mat-icon>add</mat-icon>
           </button>
           <button mat-mini-fab color="black" (click)="getUserInformation(user)">

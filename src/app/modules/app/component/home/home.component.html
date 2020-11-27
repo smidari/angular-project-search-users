@@ -1,19 +1,21 @@
 <div class="wrapp">
   <div class="content">
-    <div>
+    <div class="welcome">
       <div *appIfWithTimer="true">
-        <h2>Welcome!</h2>
-        <p>My Directive which disappears after 5 seconds</p>
+        <div class="welcome-header"><p>Welcome!</p></div>
+
+        <div class="welcome-content"><p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aut cumque inventore minus nesciunt rem rerum. Accusantium, deserunt dicta, doloremque esse exercitationem facere, fugiat iusto maiores odio officiis suscipit voluptas?</span><span>A consequuntur dolore expedita maiores nam nostrum officiis perferendis placeat quas quidem repellendus rerum velit, voluptatibus. Officia possimus, quibusdam! A, aperiam beatae earum facere ipsum mollitia placeat vero. Ab, debitis.</span></p></div>
       </div>
     </div>
     <div class="form">
-      <h2>Reactive Forms. Validators</h2>
-      <app-form-sign-in></app-form-sign-in>
+      <!--      <div><app-form-sign-in></app-form-sign-in></div>-->
+      <div><app-form-sign-up></app-form-sign-up></div>
     </div>
-    <div>
-      <h2>ControlValueAccessor</h2>
-      <app-switch [(ngModel)]="homeState"></app-switch>
-    </div>
-    <p>homeState: {{ homeState }}</p>
+    <!--    <div>-->
+    <!--      <h2>ControlValueAccessor</h2>-->
+    <!--      <app-switch [(ngModel)]="homeState"></app-switch>-->
+    <!--    </div>-->
+    <!--    <p>homeState: {{ homeState }}</p>-->
+    <!--  </div>-->
   </div>
 </div>

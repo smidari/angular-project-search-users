@@ -19,6 +19,8 @@ import { IfWithTimerDirective } from './directives/if-with-timer.directive';
 import { FormSignInComponent } from './component/form-sign-in/form-sign-in.component';
 import { MatTableModule } from '@angular/material/table';
 import { SwitchComponent } from './component/switch/switch.component';
+import {MatCardModule} from '@angular/material/card';
+import { FormSignUpComponent } from './component/form-sign-up/form-sign-up.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { SwitchComponent } from './component/switch/switch.component';
     IfWithTimerDirective,
     FormSignInComponent,
     SwitchComponent,
+    FormSignUpComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../../../user';
-import { of } from 'rxjs';
+import { UserLocalstorageService } from '../../../user-localstorage.service';
 
 @Component({
   selector: 'app-user-search',
@@ -22,10 +22,14 @@ export class UserSearchComponent implements OnInit {
   @Input() usersSortForInputValue: User[];
   @Output() setInputValue: EventEmitter<string> = new EventEmitter<string>();
   @Output() newUser: EventEmitter<User> = new EventEmitter<User>();
+  usersFromLocalStorage: User[];
 
-  constructor() {}
+  constructor(private service: UserLocalstorageService) {}
 
   ngOnInit(): void {
+    this.service
+      .getFavouritesUsersFromLocalStorage()
+      .subscribe((value) => (this.usersFromLocalStorage = value));
     this.createSearchUserForm();
     this.searchUserForm
       .get('userFirstName')
@@ -47,5 +51,9 @@ export class UserSearchComponent implements OnInit {
 
   trackById(index, item): number {
     return item.id;
+  }
+
+  mySome( id: string | number): boolean {
+    return this.usersFromLocalStorage.some((item) => item.id === id);
   }
 }

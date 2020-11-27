@@ -1,0 +1,15 @@
+<form class="form-sign-up" [formGroup]="formSignUp" (ngSubmit)="signUpSubmit()">
+  <div>
+  <label for="username">Username: </label>
+  <input type="text" id="username" name="username" placeholder="Your username...">
+  <label for="email">Email: </label>
+  <input type="text" id="email" name="email" placeholder="Your email...">
+  <label for="password">Password: </label>
+  <input type="text" id="password" name="password" placeholder="Your password...">
+  </div>
+  <div>
+  <button class="btn-sign-up" type="submit" [disabled]="formSignUp.invalid || formSignUp.pending">
+    Sign Up
+  </button>
+  </div>
+</form>

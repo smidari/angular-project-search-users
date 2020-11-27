@@ -1,18 +1,37 @@
 .wrapp {
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
+  background-image: url("../../../../assets/image/background.jpg");
+  opacity: 0.9;
+  background-size: contain;
+  height: 100vh;
+  color: white;
 }
 
 .content {
-  width: 30rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
 }
 
-.content p {
-  border: 1px dotted deepskyblue;
-  padding: 1rem;
-  margin-top: 1rem;
+.welcome{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+
+  width: 50%;
+}
+.welcome-header{
+  line-height: 10rem;
+  font-size: 7rem;
 }
 .form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: black;
   margin: 1rem 0;
+  width: 20rem;
 }
