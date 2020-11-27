@@ -1,3 +1,4 @@
 <app-user-favorite
   [favouritesUsers]="usersFavorite$ | async"
+  (deleteUser)="deleteFavoriteUser($event)"
 ></app-user-favorite>

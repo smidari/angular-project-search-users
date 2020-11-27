@@ -38,7 +38,7 @@ export class UserSearchComponent implements OnInit {
   }
 
   addToFavourites(user: User): void {
-    of(user).subscribe((value) => this.newUser.emit(value));
+    this.newUser.emit(user);
   }
 
   getUserInformation(user: User): void {

@@ -12,12 +12,16 @@ export const userReducers = createReducer(
     ...state,
     favoriteUsers,
   })),
-  on(userActions.SetInputValueSearchUser, (state, {value}) => ({
+  on(userActions.SetInputValueSearchUser, (state, { value }) => ({
     ...state,
     inputValueSearchUser: value,
   })),
-  on(userActions.AddFavoriteUserSuccess, (state, {user}) => ({
+  on(userActions.AddFavoriteUserSuccess, (state, { user }) => ({
     ...state,
     favoriteUsers: [...state.favoriteUsers, user],
+  })),
+  on(userActions.DeleteFavoriteUserSuccess, (state, { user }) => ({
+    ...state,
+    favoriteUsers: [...state.favoriteUsers.filter((u) => u.id !== user.id)],
   }))
 );

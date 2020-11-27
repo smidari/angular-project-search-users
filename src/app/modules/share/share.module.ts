@@ -9,6 +9,8 @@ import { AllUsersComponent } from './components/all-users/all-users.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import {MatListModule} from '@angular/material/list';
     UsersContainerComponent,
     AllUsersComponent,
   ],
-  imports: [CommonModule, MatToolbarModule, RouterModule, MatTableModule, MatCardModule, MatListModule],
+  imports: [CommonModule, MatToolbarModule, RouterModule, MatTableModule, MatCardModule, MatListModule, MatButtonModule, MatIconModule],
   exports: [UserDetailComponent, NavbarComponent],
 })
 export class ShareModule {}

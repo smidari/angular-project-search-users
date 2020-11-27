@@ -21,7 +21,6 @@ export class UserLocalstorageService {
   }
 
   saveFavouritesUsersToLocalStorage(user: User): Observable<User> {
-    console.log('localstorage', user);
     let users = JSON.parse(this.storage.getItem(FAVOURITES));
     if (!users) {
       this.storage.setItem(FAVOURITES, JSON.stringify([user]));
@@ -31,4 +30,12 @@ export class UserLocalstorageService {
     }
     return of(user);
   }
+
+  deleteFavouritesUsersToLocalStorage(user: User): Observable<User>{
+    const users = JSON.parse(this.storage.getItem(FAVOURITES));
+    const filterUsers = users.filter(item => item.id !== user.id);
+    this.storage.setItem(FAVOURITES, JSON.stringify(filterUsers));
+    return of(user);
+  }
+
 }

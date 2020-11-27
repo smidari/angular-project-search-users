@@ -11,3 +11,12 @@ a:hover{
 .active{
   color:  #50a1ff;
 }
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.sign-up{
+  border: 1px solid darkgray;
+  border-radius: 5px;
+}

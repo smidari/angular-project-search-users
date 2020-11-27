@@ -30,6 +30,6 @@ export class UserFavoriteComponent implements OnInit {
   }
 
   deleteFavoriteUser(user: User): void {
-    of(user).subscribe((value) => this.deleteUser.emit(value));
+    this.deleteUser.emit(user);
   }
 }

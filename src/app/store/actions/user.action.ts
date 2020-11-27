@@ -9,6 +9,8 @@ export enum EUserActions {
   SetInputValueSearchUser = 'Set Input Value Search User',
   AddFavoriteUser = 'Add Favorite User',
   AddFavoriteUserSuccess = 'Add Favorite User Success',
+  DeleteFavoriteUser = 'Delete Favorite User',
+  DeleteFavoriteUserSuccess = 'Delete Favorite User Success',
 }
 
 export const GetUsers = createAction(EUserActions.GetUsers);
@@ -35,6 +37,15 @@ export const AddFavoriteUser = createAction(
 export const AddFavoriteUserSuccess = createAction(
   EUserActions.AddFavoriteUserSuccess,
   props<{ user }>()
+);
+
+export const DeleteFavoriteUser = createAction(
+  EUserActions.DeleteFavoriteUser,
+  props<{ user: User }>()
+);
+export const DeleteFavoriteUserSuccess = createAction(
+  EUserActions.DeleteFavoriteUserSuccess,
+  props<{ user: User }>()
 );
 export type UserActions = any;
 // | GetUsers
