@@ -6,7 +6,7 @@
       routerLink="/"
       >Home</a
     >
-    <a routerLinkActive="active" routerLink="/users">All users</a>
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/users" >All users</a>
     <a routerLinkActive="active" routerLink="/search">Search</a>
     <a routerLinkActive="active" routerLink="/favorite">Favorite users</a>
     <span class="spacer"></span>

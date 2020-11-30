@@ -1,11 +1,13 @@
 import {
   ChangeDetectionStrategy,
-  Component, EventEmitter,
+  Component,
+  EventEmitter,
   Input,
-  OnInit, Output,
+  OnInit,
+  Output,
 } from '@angular/core';
 import { User } from '../../../user';
-import {of} from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-favorite',
@@ -18,7 +20,7 @@ export class UserFavoriteComponent implements OnInit {
   @Output() deleteUser: EventEmitter<User> = new EventEmitter<User>();
   selectedFavouritesUser: User;
 
-  constructor() {}
+  constructor(private router: Router) {}
   ngOnInit(): void {}
 
   onSelect(favouritesUser: User): void {
@@ -31,5 +33,9 @@ export class UserFavoriteComponent implements OnInit {
 
   deleteFavoriteUser(user: User): void {
     this.deleteUser.emit(user);
+  }
+
+  goToUserPage(id: number): void {
+    this.router.navigate(['/users', id]);
   }
 }

@@ -1,1 +1,13 @@
-<p>User page</p>
+<div class="wrapper" *ngIf="user">
+  <div class="content">
+    <div class="avatar"><img src="{{ user.avatar }}" alt="photo" /></div>
+    <div class="main-info">
+      <div class="title">
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+      </div>
+      <div class="contacts">
+        <p>Email: {{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>

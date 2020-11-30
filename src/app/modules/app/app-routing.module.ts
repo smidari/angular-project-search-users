@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllUsersComponent as AllUsersContainerComponent } from '../share/containers/all-users/all-users.component';
 import { HomeComponent } from './component/home/home.component';
+import {UserComponent} from '../user/user/user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'users', component: AllUsersContainerComponent },
+  { path: 'users/:id', component: UserComponent },
   {
     path: 'favorite',
     loadChildren: () =>

@@ -19,8 +19,8 @@ import { IfWithTimerDirective } from './directives/if-with-timer.directive';
 import { FormSignInComponent } from './component/form-sign-in/form-sign-in.component';
 import { MatTableModule } from '@angular/material/table';
 import { SwitchComponent } from './component/switch/switch.component';
-import {MatCardModule} from '@angular/material/card';
 import { FormSignUpComponent } from './component/form-sign-up/form-sign-up.component';
+import {UserModule} from '../user/user.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { FormSignUpComponent } from './component/form-sign-up/form-sign-up.compo
     MatInputModule,
     MatTableModule,
     ShareModule,
+    UserModule,
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([UserEffects]),
   ],

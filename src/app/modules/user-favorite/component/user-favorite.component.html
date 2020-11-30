@@ -9,9 +9,16 @@
           (click)="onSelect(user)"
         />
         <p matLine>
-          <span> {{ user.first_name }} {{ user.last_name }}</span>
+          <span> {{ user.first_name }} {{ user.last_name }} </span>
         </p>
-        <button mat-icon-button color="black" (click)="deleteFavoriteUser(user)">
+        <button mat-icon-button (click)="goToUserPage(user.id)">
+          <mat-icon>input</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="black"
+          (click)="deleteFavoriteUser(user)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>

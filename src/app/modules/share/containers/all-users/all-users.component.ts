@@ -15,7 +15,6 @@ export class AllUsersComponent implements OnInit {
   constructor(private store: Store<IAppState>, private router: Router) {}
 
   ngOnInit(): void {
-    // this.store.dispatch(new  GetUsers());
     this.store.dispatch(GetUsers());
   }
 }

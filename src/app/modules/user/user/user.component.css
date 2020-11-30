@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(245, 243, 244, 0.09);
+  padding: 2rem;
+}
+
+.content {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+}
+
+.avatar {
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: white;
+}
+
+.avatar img {
+  border-radius: 1rem;
+}
+
+.main-info {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  background-color: white;
+}
+
+.title {
+
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.title h2 {
+  text-transform: uppercase;
+}
+
+.contacts {
+  padding: 0.5rem;
+}

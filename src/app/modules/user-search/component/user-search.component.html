@@ -14,7 +14,6 @@
         <mat-list-item
           *ngFor="let user of usersSortForInputValue; trackBy: trackById"
         >
-          <!--          [routerLink]="['/user', user.id ]-->
           <img matListAvatar src="{{ user.avatar }}" alt="avatar" />
           <p matLine>
             <span> {{ user.first_name }} {{ user.last_name }}</span>
