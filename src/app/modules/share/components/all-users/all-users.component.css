@@ -3,8 +3,9 @@
   justify-content: center;
 }
 .container {
-  display: flex;
-  justify-content: space-between;
-  width: 600px;
   padding-top: 3rem;
+  width: 60%;
+}
+table {
+  width: 100%;
 }

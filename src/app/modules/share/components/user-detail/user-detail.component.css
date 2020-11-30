@@ -1,8 +1,12 @@
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-a:hover{
-color: rgb(102, 103, 255);
+a:hover {
+  color: rgb(102, 103, 255);
+}
+
+mat-card {
+  width: 12rem;
 }
