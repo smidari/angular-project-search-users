@@ -1,14 +1,12 @@
-import {Inject, Injectable, InjectionToken} from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { User } from './user';
 import { FAVOURITES } from './const';
 import { Observable, of } from 'rxjs';
 
-
 export const BROWSER_STORAGE = new InjectionToken<Storage>('Browser Storage', {
   providedIn: 'root',
-  factory: () => localStorage
+  factory: () => localStorage,
 });
-
 
 @Injectable({
   providedIn: 'root',
@@ -31,11 +29,10 @@ export class UserLocalstorageService {
     return of(user);
   }
 
-  deleteFavouritesUsersToLocalStorage(user: User): Observable<User>{
+  deleteFavouritesUsersToLocalStorage(user: User): Observable<User> {
     const users = JSON.parse(this.storage.getItem(FAVOURITES));
-    const filterUsers = users.filter(item => item.id !== user.id);
+    const filterUsers = users.filter((item) => item.id !== user.id);
     this.storage.setItem(FAVOURITES, JSON.stringify(filterUsers));
     return of(user);
   }
-
 }

@@ -53,7 +53,7 @@ export class UserSearchComponent implements OnInit {
     return item.id;
   }
 
-  mySome( id: string | number): boolean {
+  mySomeForDisabledFavoriteUsers( id: string | number): boolean {
     return this.usersFromLocalStorage.some((item) => item.id === id);
   }
 }

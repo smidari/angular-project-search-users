@@ -1,13 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserFavoriteComponent } from './user-favorite.component';
-import { UserLocalstorageService } from '../../../user-localstorage.service';
-import {ShareModule} from '../../share/share.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-describe('UserFavoriteComponent component', () => {
+describe('UserFavoriteComponent', () => {
   let fixture: ComponentFixture<UserFavoriteComponent>;
-  let localService;
+  let comp: UserFavoriteComponent;
   const arrayUsers = [
     {
       id: 5,
@@ -17,41 +15,39 @@ describe('UserFavoriteComponent component', () => {
       avatar: 'sdf',
     },
   ];
+  const mockUser = {
+    id: 3,
+    first_name: 'Ivan',
+    last_name: 'Ivanov',
+    avatar: 'ivan.jpg',
+    email: 'ivan@gmail.com',
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, ShareModule],
+      imports: [RouterTestingModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [UserFavoriteComponent],
-      providers: [UserLocalstorageService],
+      providers: [],
     });
 
     fixture = TestBed.createComponent(UserFavoriteComponent);
-    localService = jasmine.createSpyObj('UserLocalstorageService', {
-      getFavouritesUsersFromLocalStorage: arrayUsers,
-    });
+    comp = fixture.componentInstance;
   });
 
   it('should create', () => {
-    const comp = fixture.componentInstance;
     expect(comp).toBeDefined();
   });
 
   it('should set a new favorite user', () => {
-    const user = {
-      id: 3,
-      first_name: 'Ivan',
-      last_name: 'Ivanov',
-      avatar: 'ivan.jpg',
-      email: 'ivan@gmail.com',
-    };
-    const comp = fixture.componentInstance;
-    comp.onSelect(user);
-    expect(comp.selectedFavouritesUser).toEqual(user);
+    comp.onSelect(mockUser);
+    expect(comp.selectedFavouritesUser).toEqual(mockUser);
   });
 
-  it('should set favouritesUsers from local storage', () => {
-    const comp = fixture.componentInstance;
-    comp.favouritesUsers = localService.getFavouritesUsersFromLocalStorage();
-    expect(comp.favouritesUsers).toEqual(arrayUsers);
+  it('should delete favouritesUser by event emitter', () => {
+    let result = null;
+    comp.deleteUser.subscribe((v) => (result = v));
+    comp.deleteFavoriteUser(mockUser);
+    expect(result).toEqual(mockUser);
   });
 });

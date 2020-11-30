@@ -1,23 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NavbarComponent } from './navbar.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-describe('NavbarComponent component', () => {
+describe('NavbarComponent', () => {
   let fixture: ComponentFixture<NavbarComponent>;
+  let comp: NavbarComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, MatToolbarModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [NavbarComponent],
     });
 
     fixture = TestBed.createComponent(NavbarComponent);
+    comp = fixture.componentInstance;
   });
 
   it('should create', () => {
-    const comp = fixture.componentInstance;
     expect(comp).toBeDefined();
   });
 

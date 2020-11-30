@@ -18,6 +18,7 @@ export class UserSearchComponent implements OnInit {
   usersSortForInputValue$ = this.store.pipe(
     select(selectUsersSortForInputValue)
   );
+
   constructor(private store: Store<IAppState>, private router: Router) {}
 
   ngOnInit(): void {
@@ -29,6 +30,6 @@ export class UserSearchComponent implements OnInit {
   }
 
   addFavoriteUser(user: User): void {
-    this.store.dispatch(AddFavoriteUser({user}));
+    this.store.dispatch(AddFavoriteUser({ user }));
   }
 }

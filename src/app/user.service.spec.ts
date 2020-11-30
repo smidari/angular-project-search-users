@@ -44,4 +44,15 @@ describe('UsersService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(mockUsers);
   });
+
+  it('should return a object of User', () => {
+    const mockUser = {
+      id: 1,
+      email: 'ivanov@gmail.com',
+      first_name: 'Ivan',
+      last_name: 'Ivanoc',
+      avatar: 'ivan.jpeg',
+    };
+    userService.getUser(1).subscribe((user) => expect(user).toEqual(mockUser));
+  });
 });
