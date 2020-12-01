@@ -16,7 +16,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from '../../store/effects/user.effects';
 import { HomeComponent } from './component/home/home.component';
 import { IfWithTimerDirective } from './directives/if-with-timer.directive';
-import { FormSignInComponent } from './component/form-sign-in/form-sign-in.component';
 import { MatTableModule } from '@angular/material/table';
 import { SwitchComponent } from './component/switch/switch.component';
 import { FormSignUpComponent } from './component/form-sign-up/form-sign-up.component';
@@ -27,7 +26,6 @@ import {UserModule} from '../user/user.module';
     AppComponent,
     HomeComponent,
     IfWithTimerDirective,
-    FormSignInComponent,
     SwitchComponent,
     FormSignUpComponent,
   ],

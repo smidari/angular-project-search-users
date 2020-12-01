@@ -28,7 +28,6 @@ export class AllUsersComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.users);
   }
 
   trackById(index, item): number {
