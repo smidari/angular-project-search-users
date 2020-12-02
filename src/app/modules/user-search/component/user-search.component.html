@@ -23,7 +23,7 @@
             mat-mini-fab
             color="black"
             (click)="addToFavourites(user)"
-            [disabled]="mySomeForDisabledFavoriteUsers(user.id)"
+            [disabled]="mySomeForDisabledFavoriteUsers(user.id) | async"
           >
             <mat-icon>add</mat-icon>
           </button>

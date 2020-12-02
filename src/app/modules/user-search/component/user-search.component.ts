@@ -9,6 +9,8 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../../../user';
 import { UserLocalstorageService } from '../../../user-localstorage.service';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-search',
@@ -22,14 +24,10 @@ export class UserSearchComponent implements OnInit {
   @Input() usersSortForInputValue: User[];
   @Output() setInputValue: EventEmitter<string> = new EventEmitter<string>();
   @Output() newUser: EventEmitter<User> = new EventEmitter<User>();
-  usersFromLocalStorage: User[];
 
   constructor(private service: UserLocalstorageService) {}
 
   ngOnInit(): void {
-    this.service
-      .getFavouritesUsersFromLocalStorage()
-      .subscribe((value) => (this.usersFromLocalStorage = value));
     this.createSearchUserForm();
     this.searchUserForm
       .get('userFirstName')
@@ -53,7 +51,11 @@ export class UserSearchComponent implements OnInit {
     return item.id;
   }
 
-  mySomeForDisabledFavoriteUsers( id: string | number): boolean {
-    return this.usersFromLocalStorage.some((item) => item.id === id);
+  mySomeForDisabledFavoriteUsers(id: string | number): Observable<boolean> {
+    return this.service
+      .getFavouritesUsersFromLocalStorage()
+      .pipe(
+        map(value => value.some((item) => item.id === id))
+      );
   }
 }
