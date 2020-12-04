@@ -2,13 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllUsersComponent as AllUsersContainerComponent } from '../share/containers/all-users/all-users.component';
 import { HomeComponent } from './component/home/home.component';
-import {UserComponent} from '../user/user/user.component';
-import {UserResolver} from '../user/user.resolver';
+import { UserComponent } from '../user/user/user.component';
+import { UserResolver } from '../user/user.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'users', component: AllUsersContainerComponent },
-  { path: 'users/:id', component: UserComponent, resolve: { user: UserResolver } },
+  {
+    path: 'users/:id',
+    component: UserComponent,
+    resolve: { user: UserResolver },
+  },
   {
     path: 'favorite',
     loadChildren: () =>
@@ -21,6 +25,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('../user-search/user-search.module').then(
         (m) => m.UserSearchModule
+      ),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('../login-page/login-page.module').then(
+        (m) => m.LoginPageModule
       ),
   },
 ];

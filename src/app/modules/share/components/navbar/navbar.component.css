@@ -1,29 +1,30 @@
-.nav-bar{
+.nav-bar {
   background-color: #030504;
   color: white;
   box-shadow: 7px 7px 5px 0px rgba(253, 244, 255, 0);
   opacity: 0.9;
 }
 
-a{
+a {
   text-decoration: none;
   color: #fffbff;
   margin: 10px;
 }
 
-a:hover{
+a:hover {
   color: rgb(102, 103, 255);
 }
 
-.active{
-  color: rgb(102, 103, 255);;
+.active {
+  color: rgb(102, 103, 255);
 }
 
 .spacer {
   flex: 1 1 auto;
 }
 
-.sign-up{
+.login,
+.logout {
   border: 1px solid darkgray;
   border-radius: 5px;
 }

@@ -12,3 +12,7 @@
 .btn-add{
   margin: 1rem;
 }
+
+mat-selection-list:focus {
+  outline: none;
+}

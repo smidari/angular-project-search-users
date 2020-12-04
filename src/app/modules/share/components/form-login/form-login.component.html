@@ -1,7 +1,11 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
   <div class="form-control">
-    <label>Email</label>
-    <input type="text" placeholder="Email" formControlName="email" />
+    <mat-error class="error" *ngIf="userService.error$ | async as error"
+      >{{ error }}!</mat-error
+    >
+
+    <label for="email">Email: </label>
+    <input id="email" type="text" placeholder="Email" formControlName="email" />
     <div
       *ngIf="form.get('email').invalid && form.get('email').touched"
       class="validation"
@@ -18,8 +22,8 @@
     </div>
   </div>
   <div class="form-control">
-    <label>Password</label>
-    <input placeholder="Пароль" formControlName="password" />
+    <label for="password">Password: </label>
+    <input id="password" placeholder="Password" formControlName="password" />
     <div
       *ngIf="form.get('password').invalid && form.get('password').touched"
       class="validation"
@@ -27,12 +31,19 @@
       <small *ngIf="form.get('password').errors.required"
         >The field must not be empty.</small
       >
-      <small *ngIf="form.get('password').errors.minlength.requiredLength"
-        >Length must be at least 6</small
+      <small *ngIf="form.get('password').errors.minlength">
+        Length must be at least 6</small
       >
     </div>
   </div>
-  <button type="submit" [disabled]="form.invalid || form.pending">
-    Sign in
-  </button>
+  <div class="form-footer">
+    <button
+      mat-stroked-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid || form.pending || isSubmitted"
+    >
+      Sign in
+    </button>
+  </div>
 </form>
