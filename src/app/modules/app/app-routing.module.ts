@@ -4,14 +4,20 @@ import { AllUsersComponent as AllUsersContainerComponent } from '../share/contai
 import { HomeComponent } from './component/home/home.component';
 import { UserComponent } from '../user/user/user.component';
 import { UserResolver } from '../user/user.resolver';
+import { AuthGuard } from '../../auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'users', component: AllUsersContainerComponent },
+  {
+    path: 'users',
+    component: AllUsersContainerComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'users/:id',
     component: UserComponent,
     resolve: { user: UserResolver },
+    canActivate: [AuthGuard],
   },
   {
     path: 'favorite',
@@ -30,9 +36,7 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('../login-page/login-page.module').then(
-        (m) => m.LoginPageModule
-      ),
+      import('../login-page/login-page.module').then((m) => m.LoginPageModule),
   },
 ];
 

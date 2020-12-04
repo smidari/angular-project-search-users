@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { SwitchComponent } from './component/switch/switch.component';
 import { FormSignUpComponent } from './component/form-sign-up/form-sign-up.component';
 import {UserModule} from '../user/user.module';
+import {AuthGuard} from "../../auth.guard";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import {UserModule} from '../user/user.module';
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([UserEffects]),
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
