@@ -1,0 +1,31 @@
+label {
+  display: block;
+  font-size: 1rem;
+  margin:  1rem 0;
+}
+
+input {
+  width: 260px;
+  padding: 1rem;
+  border: 1px solid #dfdfdf;
+  border-radius: 0.3rem;
+  outline: none;
+}
+.form-footer {
+  display: flex;
+  justify-content: center;
+}
+.form-footer button {
+  padding: 6px 20px;
+  margin-top: 1rem;
+}
+
+small {
+  color: red;
+}
+
+.error {
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-size: 15px;
+}

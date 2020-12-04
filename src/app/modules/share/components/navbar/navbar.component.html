@@ -7,15 +7,41 @@
       >Home</a
     >
     <a
+      *ngIf="usersService.isAuthenticated()"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
       routerLink="/users"
       >All users</a
     >
-    <a routerLinkActive="active" routerLink="/search">Search</a>
-    <a routerLinkActive="active" routerLink="/favorite">Favorite users</a>
+    <a
+      *ngIf="usersService.isAuthenticated()"
+      routerLinkActive="active"
+      routerLink="/search"
+      >Search</a
+    >
+    <a
+      *ngIf="usersService.isAuthenticated()"
+      routerLinkActive="active"
+      routerLink="/favorite"
+      >Favorite users</a
+    >
     <span class="spacer"></span>
-    <button mat-button>Sign In</button>
-    <button mat-button class="sign-up">Sign Up</button>
+    <button
+      *ngIf="!usersService.isAuthenticated()"
+      class="login"
+      mat-button
+      routerLink="/login"
+    >
+      Login
+    </button>
+    <button
+      *ngIf="usersService.isAuthenticated()"
+      class="logout"
+      mat-button
+      routerLink="/"
+      (click)="logout($event)"
+    >
+      Logout
+    </button>
   </mat-toolbar>
 </div>

@@ -2,10 +2,15 @@
   display: flex;
   justify-content: center;
 }
+
 .container {
   display: flex;
   justify-content: space-between;
   width: 600px;
   padding-top: 3rem;
+}
+
+mat-selection-list:focus {
+  outline: none;
 }
 

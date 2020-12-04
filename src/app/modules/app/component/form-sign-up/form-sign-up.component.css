@@ -11,6 +11,7 @@
   width: 100%;
   line-height: 3rem;
   margin: 1rem 0;
+  outline: none;
 }
 
 .btn-sign-up {
@@ -24,6 +25,7 @@
   font-size: 16px;
   transition-duration: 0.4s;
   cursor: pointer;
+  outline: none;
 }
 .btn-sign-up:hover {
   background-color: rgb(102, 103, 255);

@@ -20,3 +20,6 @@
 [1130/074127.938:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
 [1130/140208.312:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
 [1130/154445.064:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[1202/121055.769:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Mi\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\430ff515-e175-4501-b882-539f234c68c2: Системе не удается найти указанный путь. (0x3)
+[1202/121055.777:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Mi\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\dcaf3139-e504-441d-9f30-12fb28a603c0: Системе не удается найти указанный путь. (0x3)
+[1202/121055.778:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
