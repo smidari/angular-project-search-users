@@ -4,7 +4,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { UserApi } from './user';
+import { UserApi } from '../user';
 
 describe('UsersService', () => {
   let userService: UsersService;

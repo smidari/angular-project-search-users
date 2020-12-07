@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserSearchComponent } from './user-search.component';
-import { UsersService } from '../../../users.service';
+import { UsersService } from '../../../services/users.service';
 import { cold } from 'jasmine-marbles';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -39,7 +39,7 @@ describe('UserSearchComponent component', () => {
     expect(comp).toBeDefined();
   });
 
-  it('should set a selected user', () => {
+  it('should set a selected user-page', () => {
     const user = {
       id: 10,
       first_name: 'Ivan',

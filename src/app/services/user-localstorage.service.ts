@@ -1,6 +1,6 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { User } from './user';
-import { FAVOURITES } from './const';
+import { User } from '../user';
+import { FAVOURITES } from '../const';
 import { Observable, of } from 'rxjs';
 
 export const BROWSER_STORAGE = new InjectionToken<Storage>('Browser Storage', {

@@ -8,9 +8,9 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../../../user';
-import { UserLocalstorageService } from '../../../user-localstorage.service';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { UserLocalstorageService } from '../../../services/user-localstorage.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-search',
@@ -54,8 +54,6 @@ export class UserSearchComponent implements OnInit {
   mySomeForDisabledFavoriteUsers(id: string | number): Observable<boolean> {
     return this.service
       .getFavouritesUsersFromLocalStorage()
-      .pipe(
-        map(value => value.some((item) => item.id === id))
-      );
+      .pipe(map((value) => value.some((item) => item.id === id)));
   }
 }

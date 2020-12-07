@@ -19,8 +19,8 @@ import { IfWithTimerDirective } from './directives/if-with-timer.directive';
 import { MatTableModule } from '@angular/material/table';
 import { SwitchComponent } from './component/switch/switch.component';
 import { FormSignUpComponent } from './component/form-sign-up/form-sign-up.component';
-import {UserModule} from '../user/user.module';
-import {AuthGuard} from "../../auth.guard";
+import {UserPageModule} from '../user-page/user-page.module';
+import {AuthGuard} from "../../services/auth.guard";
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import {AuthGuard} from "../../auth.guard";
     MatInputModule,
     MatTableModule,
     ShareModule,
-    UserModule,
+    UserPageModule,
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([UserEffects]),
   ],

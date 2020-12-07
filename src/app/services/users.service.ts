@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { ApiAuthResponse, UserApi, UserForLogin } from './user';
-import { Observable, Subject, throwError } from 'rxjs';
+import { ApiAuthResponse, UserApi, UserForLogin } from '../user';
+import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
-import { AUTH_TOKEN } from './const';
+import {catchError, map, tap} from 'rxjs/operators';
+import { AUTH_TOKEN } from '../const';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
   public error$: Subject<string> = new Subject<string>();
-  constructor(private http: HttpClient) {}
+  public token$: BehaviorSubject<string | null>  = new BehaviorSubject<string|undefined>(this.token);
+  public isAuthenticated$: Observable<boolean> = this.token$.asObservable().pipe(map(value => !!value));
+
+  constructor(private http: HttpClient) {
+  }
 
   get token(): string {
     return localStorage.getItem(AUTH_TOKEN);
@@ -24,39 +28,31 @@ export class UsersService {
   getUser(id: number): Observable<any> {
     return this.http.get(`https://reqres.in/api/users/${id}`);
   }
-
+  // API data for LOGIN - SUCCESSFUL {"email": "eve.holt@reqres.in", "password": "cityslicka" }
   login(user: UserForLogin): Observable<any> {
     return this.http
       .post(`https://reqres.in/api/login`, user)
-      .pipe(tap(this.setToken), catchError(this.handelError.bind(this)));
-
-    // {
-    //   "email": "eve.holt@reqres.in",
-    //   "password": "cityslicka"
-    // }
+      .pipe(tap(this.setToken.bind(this)), catchError(this.handelError.bind(this)));
   }
 
   logout(): void {
     this.setToken(null);
   }
 
-  // авторизован юзер или нет
   isAuthenticated(): boolean {
     return !!this.token;
   }
 
-  private setToken(response: ApiAuthResponse | null): void {
-    console.log(response);
+  setToken(response: ApiAuthResponse | null): void {
     response
       ? localStorage.setItem(AUTH_TOKEN, response.token)
       : localStorage.removeItem(AUTH_TOKEN);
+    this.token$.next(this.token);
   }
-//test
 
   private handelError(error: HttpErrorResponse): Observable<any> {
     const message = error.error.error;
-    console.log('message', message);
-    if (message === 'user not found') {
+    if (message === 'user-page not found') {
       this.error$.next('User not found');
     }
     return throwError(error);

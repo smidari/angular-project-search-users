@@ -7,27 +7,27 @@
       >Home</a
     >
     <a
-      *ngIf="usersService.isAuthenticated()"
+      *ngIf="usersService.isAuthenticated$ | async"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
       routerLink="/users"
       >All users</a
     >
     <a
-      *ngIf="usersService.isAuthenticated()"
+      *ngIf="usersService.isAuthenticated$ | async"
       routerLinkActive="active"
       routerLink="/search"
       >Search</a
     >
     <a
-      *ngIf="usersService.isAuthenticated()"
+      *ngIf="usersService.isAuthenticated$ | async"
       routerLinkActive="active"
       routerLink="/favorite"
       >Favorite users</a
     >
     <span class="spacer"></span>
     <button
-      *ngIf="!usersService.isAuthenticated()"
+      *ngIf="!(usersService.isAuthenticated$ | async)"
       class="login"
       mat-button
       routerLink="/login"
@@ -35,7 +35,7 @@
       Login
     </button>
     <button
-      *ngIf="usersService.isAuthenticated()"
+      *ngIf="usersService.isAuthenticated$ | async"
       class="logout"
       mat-button
       routerLink="/"
