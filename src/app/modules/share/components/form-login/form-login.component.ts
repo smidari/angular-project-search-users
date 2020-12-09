@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MyValidators } from './validators/my-validators';
 import { UsersService } from '../../../../services/users.service';
 import { Router } from '@angular/router';
-import { UserForLogin } from '../../../../user';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form-login',
@@ -13,6 +13,7 @@ import { UserForLogin } from '../../../../user';
 export class FormLoginComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
+  subscription$;
   constructor(public userService: UsersService, private router: Router) {}
 
   ngOnInit(): void {
@@ -34,18 +35,22 @@ export class FormLoginComponent implements OnInit {
       return;
     }
     this.isSubmitted = true;
-    const user: UserForLogin = {
-      email: this.form.value.email,
-      password: this.form.value.password,
-    };
-
-    this.userService.login(user).subscribe(
-      () => {
+    const { email, password } = this.form.value;
+    this.subscription$ = this.userService
+      .login({ email, password })
+      .pipe(
+        finalize(() => {
+          this.isSubmitted = false;
+        })
+      )
+      .subscribe(() => {
         this.form.reset();
         this.router.navigate(['/users']);
         this.isSubmitted = false;
-      },
-      (error) => (this.isSubmitted = false)
-    );
+      });
+  }
+
+  ngOnDestroy() {
+    this.subscription$.unsubscribe();
   }
 }

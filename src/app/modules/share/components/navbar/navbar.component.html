@@ -6,25 +6,16 @@
       routerLink="/"
       >Home</a
     >
-    <a
-      *ngIf="usersService.isAuthenticated$ | async"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      routerLink="/users"
-      >All users</a
-    >
-    <a
-      *ngIf="usersService.isAuthenticated$ | async"
-      routerLinkActive="active"
-      routerLink="/search"
-      >Search</a
-    >
-    <a
-      *ngIf="usersService.isAuthenticated$ | async"
-      routerLinkActive="active"
-      routerLink="/favorite"
-      >Favorite users</a
-    >
+    <ng-container *ngIf="usersService.isAuthenticated$ | async">
+      <a
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/users"
+        >All users</a
+      >
+      <a routerLinkActive="active" routerLink="/search">Search</a>
+      <a routerLinkActive="active" routerLink="/favorite">Favorite users</a>
+    </ng-container>
     <span class="spacer"></span>
     <button
       *ngIf="!(usersService.isAuthenticated$ | async)"

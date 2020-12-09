@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { ApiAuthResponse, UserApi, UserForLogin } from '../user';
-import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {catchError, map, tap} from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { AUTH_TOKEN } from '../const';
+import { WebStorage, WebStorages } from '../decorators/web-storage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
   public error$: Subject<string> = new Subject<string>();
-  public token$: BehaviorSubject<string | null>  = new BehaviorSubject<string|undefined>(this.token);
-  public isAuthenticated$: Observable<boolean> = this.token$.asObservable().pipe(map(value => !!value));
+  private token$: BehaviorSubject<string | null> = new BehaviorSubject<
+    string | undefined
+  >(this.token);
+  public isAuthenticated$: Observable<
+    boolean
+  > = this.token$.asObservable().pipe(map((value) => !!value));
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   get token(): string {
     return localStorage.getItem(AUTH_TOKEN);
@@ -32,7 +36,10 @@ export class UsersService {
   login(user: UserForLogin): Observable<any> {
     return this.http
       .post(`https://reqres.in/api/login`, user)
-      .pipe(tap(this.setToken.bind(this)), catchError(this.handelError.bind(this)));
+      .pipe(
+        tap(this.setToken.bind(this)),
+        catchError(this.handelError.bind(this))
+      );
   }
 
   logout(): void {
@@ -51,10 +58,7 @@ export class UsersService {
   }
 
   private handelError(error: HttpErrorResponse): Observable<any> {
-    const message = error.error.error;
-    if (message === 'user-page not found') {
-      this.error$.next('User not found');
-    }
+    this.error$.next(error.error.error);
     return throwError(error);
   }
 }

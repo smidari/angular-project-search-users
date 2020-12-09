@@ -9,6 +9,7 @@ import { UsersService } from '../../services/users.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
+
 export class UserResolver implements Resolve<UserApi> {
   constructor(private usersService: UsersService) {}
   resolve(
@@ -18,4 +19,3 @@ export class UserResolver implements Resolve<UserApi> {
     return this.usersService.getUser(+route.params.id);
   }
 }
-

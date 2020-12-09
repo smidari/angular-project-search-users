@@ -14,11 +14,6 @@ export const BROWSER_STORAGE = new InjectionToken<Storage>('Browser Storage', {
 export class UserLocalstorageService {
   constructor(@Inject(BROWSER_STORAGE) public storage: Storage) {}
 
-  setItemm(name: string, value: any): void {
-    // this.storage.setItem(name, JSON.stringify(value));
-    console.log('Hi');
-  }
-
   getFavouritesUsersFromLocalStorage(): Observable<User[]> {
     return of(JSON.parse(this.storage.getItem(FAVOURITES) as string));
   }
