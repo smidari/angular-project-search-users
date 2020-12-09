@@ -54,6 +54,6 @@ export class UserSearchComponent implements OnInit {
   mySomeForDisabledFavoriteUsers(id: string | number): Observable<boolean> {
     return this.service
       .getFavouritesUsersFromLocalStorage()
-      .pipe(map((value) => value.some((item) => item.id === id)));
+      .pipe(map((value) => value?.some((item) => item.id === id)));
   }
 }
