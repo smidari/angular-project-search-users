@@ -1,0 +1,49 @@
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-control">
+    <mat-error class="error" *ngIf="userService.error$ | async as error">
+      {{ error }}!
+    </mat-error>
+
+    <label for="email">Email: </label>
+    <input id="email" type="text" placeholder="Email" formControlName="email"/>
+    <div
+      *ngIf="form.get('email').invalid && form.get('email').touched"
+      class="validation"
+    >
+      <small *ngIf="form.get('email').errors.required"
+      >The field must not be empty.
+      </small>
+      <small *ngIf="form.get('email').errors.email"
+      >Enter the correct email.</small
+      >
+      <small *ngIf="!form.get('email').errors.restrictedEmail"
+      >This email {{ form.get("email").value }} cannot be used.</small
+      >
+    </div>
+  </div>
+  <div class="form-control">
+    <label for="password">Password: </label>
+    <input id="password" placeholder="Password" formControlName="password"/>
+    <div
+      *ngIf="form.get('password').invalid && form.get('password').touched"
+      class="validation"
+    >
+      <small *ngIf="form.get('password').errors.required"
+      >The field must not be empty.</small
+      >
+      <small *ngIf="form.get('password').errors.minlength">
+        Length must be at least 6</small
+      >
+    </div>
+  </div>
+  <div class="form-footer">
+    <button
+      mat-stroked-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid || form.pending || isSubmitted"
+    >
+      Login
+    </button>
+  </div>
+</form>

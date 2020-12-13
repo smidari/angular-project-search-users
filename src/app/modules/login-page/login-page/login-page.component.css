@@ -1,0 +1,23 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  border-radius: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.title{
+  margin-bottom: 1rem;
+}

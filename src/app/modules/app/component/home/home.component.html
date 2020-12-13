@@ -1,4 +1,4 @@
-<div class="wrapp">
+<div class="wrap">
   <div class="content">
     <div class="welcome">
       <div *appIfWithTimer="true">
@@ -8,8 +8,8 @@
         </div>
       </div>
     </div>
-    <div class="form">
-      <div><app-form-sign-up></app-form-sign-up></div>
+    <div class="form" *ngIf="!usersService.isAuthenticated()">
+      <div><app-form-login></app-form-login></div>
     </div>
   </div>
 </div>

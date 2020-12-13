@@ -1,7 +1,8 @@
-.wrapp {
+.wrap {
   background-image: url("../../../../assets/image/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   opacity: 0.9;
-  background-size: contain;
   height: 100vh;
   color: white;
 }
@@ -27,14 +28,14 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  padding: 1rem;
   border-radius: 0.5rem;
   background-color: white;
   color: black;
-  margin: 1rem 0;
-  width: 20rem;
+  padding: 2rem;
+  margin: 2rem;
 }
 
-.welcome-content  {
-  background-color: rgba(0, 0, 0, 0.7);;
+.welcome-content {
+  background-color: rgba(0, 0, 0, 0.7);
 }
+

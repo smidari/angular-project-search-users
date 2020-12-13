@@ -39,7 +39,7 @@ describe('UserFavoriteComponent', () => {
     expect(comp).toBeDefined();
   });
 
-  it('should set a new favorite user', () => {
+  it('should set a new favorite user-page', () => {
     comp.onSelect(mockUser);
     expect(comp.selectedFavouritesUser).toEqual(mockUser);
   });

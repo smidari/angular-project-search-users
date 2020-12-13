@@ -10,7 +10,7 @@
           />
         </mat-form-field>
       </form>
-      <mat-selection-list>
+      <mat-selection-list class="sda">
         <mat-list-item
           *ngFor="let user of usersSortForInputValue; trackBy: trackById"
         >
@@ -23,7 +23,7 @@
             mat-mini-fab
             color="black"
             (click)="addToFavourites(user)"
-            [disabled]="mySomeForDisabledFavoriteUsers(user.id)"
+            [disabled]="mySomeForDisabledFavoriteUsers(user.id) | async"
           >
             <mat-icon>add</mat-icon>
           </button>

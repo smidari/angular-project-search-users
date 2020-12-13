@@ -11,9 +11,9 @@ import {
   GetUsersSuccess,
 } from '../actions/user.action';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { UsersService } from '../../users.service';
+import { UsersService } from '../../services/users.service';
 import { User, UserApi } from '../../user';
-import { UserLocalstorageService } from '../../user-localstorage.service';
+import { UserLocalstorageService } from '../../services/user-localstorage.service';
 import { of } from 'rxjs';
 
 @Injectable()
